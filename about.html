@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Always Forward Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#061527;
+    --navy:#0A1F3D;
+    --teal:#0E7C7B;
+    --teal-soft:#12a3a1;
+    --electric:#2F6FED;
+    --paper:#F5F7FA;
+    --ink:#16212E;
+    --mist:#B9C8D8;
+    --line:#1C3355;
+    --max:1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  img,svg{display:block;}
+  button{font-family:inherit; cursor:pointer;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:#ffffff;
+    border-bottom:1px solid #e6eaf0;
+    box-shadow:0 2px 16px rgba(6,21,39,0.06);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:92px;
+  }
+  .logo{display:flex; align-items:center; gap:10px;}
+  .logo-full-img{height:46px; width:auto; display:block;}
+  .logo-chip{
+    display:flex; align-items:center; justify-content:center;
+    width:36px; height:36px;
+    background:#fff;
+    border-radius:8px;
+    padding:5px;
+  }
+  .logo-mark-img{width:100%; height:auto;}
+  .logo-text{
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    font-size:1.15rem;
+    color:#fff;
+    letter-spacing:0.02em;
+  }
+  .logo-text span{color:var(--teal-soft);}
+  .nav-links{display:flex; align-items:center; gap:36px;}
+  .nav-links a{
+    color:#3d4a5c;
+    font-size:0.92rem;
+    font-weight:500;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--navy-deep);}
+  .nav-cta{
+    background:var(--electric);
+    color:#fff !important;
+    padding:10px 20px;
+    border-radius:6px;
+    font-size:0.88rem;
+    font-weight:600;
+    transition:background .2s, transform .2s;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:#4a80f0; transform:translateY(-1px);}
+  .nav-right{display:flex; align-items:center; gap:18px;}
+  .nav-toggle{
+    display:none;
+    background:none; border:none; padding:8px;
+    cursor:pointer;
+  }
+  .nav-toggle span{
+    display:block; width:22px; height:2px; background:var(--navy-deep);
+    margin:5px 0; transition:transform .2s, opacity .2s;
+  }
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu{
+    display:none;
+    flex-direction:column;
+    background:#fff;
+    border-top:1px solid #e6eaf0;
+    box-shadow:0 8px 16px rgba(6,21,39,0.06);
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{
+    padding:16px 32px;
+    color:#3d4a5c;
+    font-size:0.95rem;
+    font-weight:500;
+    border-bottom:1px solid #eef1f5;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:radial-gradient(ellipse 90% 70% at 75% 20%, #0d2a52 0%, var(--navy-deep) 55%);
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    padding:96px 0 120px;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1fr 460px;
+    gap:40px;
+    align-items:center;
+    position:relative;
+    z-index:2;
+  }
+  .hero-eyebrow{color:var(--teal-soft); margin-bottom:20px;}
+  .hero h1{
+    font-size:clamp(2.4rem, 4.4vw, 3.6rem);
+    line-height:1.06;
+    color:#fff;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(90deg, var(--teal-soft), var(--electric));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p.sub{
+    margin-top:22px;
+    font-size:1.1rem;
+    line-height:1.6;
+    color:var(--mist);
+    max-width:520px;
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--electric);
+    color:#fff;
+    padding:15px 26px;
+    border-radius:7px;
+    font-weight:600;
+    font-size:0.98rem;
+    border:none;
+    transition:background .2s, transform .2s;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary:hover{background:#4a80f0; transform:translateY(-2px);}
+  .btn-ghost{
+    background:transparent;
+    color:#fff;
+    padding:15px 24px;
+    border-radius:7px;
+    font-weight:600;
+    font-size:0.98rem;
+    border:1px solid rgba(255,255,255,0.28);
+    transition:border-color .2s, background .2s;
+  }
+  .btn-ghost:hover{border-color:#fff; background:rgba(255,255,255,0.06);}
+
+  /* hub diagram */
+  .hub-wrap{position:relative; width:100%; aspect-ratio:1/1; max-width:460px;}
+  .hub-wrap svg{width:100%; height:100%; overflow:visible;}
+  .hub-line{
+    stroke:rgba(255,255,255,0.28);
+    stroke-width:1.5;
+    fill:none;
+    stroke-dasharray:300;
+    stroke-dashoffset:300;
+    animation:draw 1.4s ease forwards;
+  }
+  .hub-line.l2{animation-delay:.15s;}
+  .hub-line.l3{animation-delay:.3s;}
+  .hub-line.l4{animation-delay:.45s;}
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  .hub-node{
+    position:absolute;
+    background:rgba(10,31,61,0.85);
+    border:1px solid rgba(255,255,255,0.16);
+    border-radius:10px;
+    padding:10px 13px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    color:var(--mist);
+    text-align:center;
+    width:118px;
+    opacity:0;
+    animation:fadeUp .6s ease forwards;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+  }
+  .hub-node b{display:block; color:#fff; font-family:'Inter',sans-serif; font-weight:600; font-size:0.78rem; margin-bottom:1px;}
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+  .hub-center{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:104px; height:104px; border-radius:50%;
+    background:linear-gradient(135deg, var(--teal), var(--electric));
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column;
+    box-shadow:0 0 0 8px rgba(47,111,237,0.12), 0 12px 32px rgba(0,0,0,0.4);
+  }
+  .hub-center b{font-family:'Montserrat',sans-serif; font-weight:800; font-size:1.05rem; color:#fff;}
+  .hub-center span{font-family:'JetBrains Mono', monospace; font-size:0.58rem; color:rgba(255,255,255,0.85); margin-top:2px;}
+  .n1{top:0; left:8%; animation-delay:.5s;}
+  .n2{top:4%; right:0; animation-delay:.65s;}
+  .n3{bottom:2%; left:0; animation-delay:.8s;}
+  .n4{bottom:0; right:6%; animation-delay:.95s;}
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{
+    background:var(--navy);
+    padding:26px 0;
+    border-top:1px solid rgba(255,255,255,0.06);
+  }
+  .trust .wrap{
+    display:flex; flex-wrap:wrap; gap:28px 48px;
+    justify-content:center;
+  }
+  .trust-item{
+    color:var(--mist);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.02em;
+    display:flex; align-items:center; gap:9px;
+  }
+  .trust-item::before{content:"—"; color:var(--teal-soft);}
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:104px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head .eyebrow{color:var(--teal); margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.7rem, 3vw, 2.3rem); color:var(--navy-deep); line-height:1.15;}
+  .section-head p{margin-top:16px; font-size:1.05rem; color:#465469; line-height:1.6;}
+
+  /* ---------- OFFERINGS ---------- */
+  .offer-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:#dde3ea;
+    border:1px solid #dde3ea;
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .offer-card{
+    background:#fff;
+    padding:34px 26px;
+    transition:background .25s;
+  }
+  .offer-card:hover{background:#fbfcfe;}
+  .offer-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    color:var(--electric);
+    letter-spacing:0.06em;
+    margin-bottom:16px;
+    display:block;
+  }
+  .offer-card h3{
+    font-size:1.08rem;
+    color:var(--navy-deep);
+    margin-bottom:10px;
+    line-height:1.3;
+  }
+  .offer-card p{
+    font-size:0.92rem;
+    color:#5b6b7f;
+    line-height:1.55;
+    margin-bottom:18px;
+  }
+  .offer-price{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.76rem;
+    color:var(--navy);
+    font-weight:500;
+    padding-top:14px;
+    border-top:1px solid #eef1f5;
+  }
+
+  /* ---------- SYSTEM SECTION ---------- */
+  .system{background:var(--navy-deep); color:#fff;}
+  .system .section-head .eyebrow{color:var(--teal-soft);}
+  .system .section-head h2{color:#fff;}
+  .system .section-head p{color:var(--mist);}
+  .system-body{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .system-list{display:flex; flex-direction:column; gap:22px;}
+  .system-list li{
+    list-style:none;
+    display:flex; gap:16px;
+    padding-bottom:22px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .system-list li:last-child{border-bottom:none;}
+  .system-num{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--teal-soft);
+    font-size:0.85rem;
+    padding-top:2px;
+    min-width:22px;
+  }
+  .system-list h4{font-family:'Inter',sans-serif; font-weight:600; font-size:1rem; margin-bottom:5px;}
+  .system-list p{color:var(--mist); font-size:0.92rem; line-height:1.55;}
+  .system-visual{
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:40px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    color:var(--mist);
+    line-height:2.1;
+  }
+  .system-visual .flow{color:#fff;}
+  .system-visual .arrow{color:var(--teal-soft); margin:0 6px;}
+
+  /* ---------- FOUNDER ---------- */
+  .founder{background:#fff;}
+  .founder-body{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:48px;
+    align-items:start;
+  }
+  .founder-badge{
+    width:220px; height:220px;
+    border-radius:16px;
+    background:linear-gradient(155deg, var(--navy), var(--teal));
+    display:flex; align-items:center; justify-content:center;
+    color:#fff;
+    font-family:'Montserrat',sans-serif;
+    font-weight:800;
+    font-size:3rem;
+    overflow:hidden;
+  }
+  .founder-badge img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .founder-text p{font-size:1.02rem; line-height:1.75; color:#3d4a5c; margin-bottom:18px;}
+  .founder-text p:last-child{margin-bottom:0;}
+  .founder-text strong{color:var(--navy-deep);}
+  .founder-note{
+    margin-top:24px;
+    padding:16px 18px;
+    background:#f2f6fa;
+    border-left:3px solid var(--teal);
+    border-radius:0 8px 8px 0;
+    font-size:0.88rem;
+    color:#465469;
+    font-style:italic;
+  }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:linear-gradient(120deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    text-align:center;
+    padding:100px 0;
+  }
+  .final-cta h2{font-size:clamp(1.8rem,3.4vw,2.5rem); margin-bottom:16px;}
+  .final-cta p{color:var(--mist); font-size:1.05rem; max-width:520px; margin:0 auto 34px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-deep); border-top:1px solid rgba(255,255,255,0.08); padding:40px 0;}
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+  }
+  footer .fine{color:var(--mist); font-size:0.82rem; font-family:'JetBrains Mono', monospace;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr; }
+    .hub-wrap{max-width:340px; margin:0 auto;}
+    .offer-grid{grid-template-columns:1fr 1fr;}
+    .system-body{grid-template-columns:1fr;}
+    .founder-body{grid-template-columns:1fr;}
+    .founder-badge{width:120px; height:120px; font-size:1.8rem;}
+    .nav-links a:not(.nav-cta){display:none;}
+    .nav-toggle{display:block;}
+    .logo-full-img{height:38px;}
+  }
+  @media (max-width:560px){
+    .offer-grid{grid-template-columns:1fr;}
+    section{padding:72px 0;}
+    .hero{padding:64px 0 88px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hub-line, .hub-node{animation:none; opacity:1; stroke-dashoffset:0;}
+  }
+  :focus-visible{outline:2px solid var(--electric); outline-offset:3px;}
+</style>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="index.html" class="logo">
+      <img src="img/afi-logo-full.png" alt="Always Forward Intelligence — Built on Experience. Powered by AI." class="logo-full-img">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="offerings.html">Offerings</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="about.html" style="color:var(--teal-soft); font-weight:700;">About</a>
+      <a href="scorecard.html" target="_blank" rel="noopener" class="nav-cta">Get my free scorecard</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="offerings.html">Offerings</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="about.html" style="color:var(--teal-soft); font-weight:700;">About</a>
+  </div>
+</header>
+<script>
+  var navToggle = document.getElementById('navToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', function(){
+    var isOpen = mobileMenu.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+
+<section class="founder" style="padding-top:96px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The Business</div>
+      <h2>AI systems, built for businesses that don't have a tech team</h2>
+    </div>
+    <div style="max-width:760px;">
+      <p style="font-size:1.02rem; line-height:1.75; color:#3d4a5c; margin-bottom:18px;">Always Forward Intelligence (AFI) is an AI automation agency built for local small and mid-sized businesses. Built on the GoHighLevel platform, AFI gives SMB owners the kind of systems &mdash; AI-powered lead follow-up, virtual sales agents, ad creation, and marketing automation &mdash; that used to be reserved for companies with enterprise budgets and in-house tech teams.</p>
+      <p style="font-size:1.02rem; line-height:1.75; color:#3d4a5c; margin-bottom:18px;">AFI&rsquo;s approach starts with clarity, not guesswork. Every engagement begins with a business efficiency audit that maps exactly where automation will save the most time and generate the most revenue, before a single system gets built. From there, clients move into managed service tiers &mdash; from foundational GHL setup and AI ad creation to full-scale marketing systems &mdash; so owners can spend less time chasing leads and more time running their business.</p>
+      <p style="font-size:1.02rem; line-height:1.75; color:#3d4a5c; margin-bottom:0;">Rooted in Northeast Wisconsin, AFI works closely with the local business community it knows firsthand: apparel shops, service businesses, and other SMBs that don&rsquo;t have a marketing department but do have real growth potential. The agency&rsquo;s guiding line &mdash; <strong>Built on Experience. Powered by AI.</strong> &mdash; reflects its philosophy: proven, enterprise-grade practices, applied through AI, for the businesses that need them most.</p>
+    </div>
+  </div>
+</section>
+
+<section class="system" id="founder">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The Founder</div>
+      <h2>Over 25 years of enterprise experience, now built for small business</h2>
+    </div>
+    <div class="founder-body">
+      <div class="founder-badge"><img src="img/afi-founder-headshot.png" alt="Jay VanCampenhout, founder of Always Forward Intelligence"></div>
+      <div class="founder-text" style="color:var(--mist);">
+        <p style="color:var(--mist);">Jay VanCampenhout founded Always Forward Intelligence (AFI) after over 25 years in enterprise software and solutions architecture. His background spans insurance underwriting systems, document imaging and compliance platforms, and building data warehouses from the ground up &mdash; plus a decade in fintech building auditing and automation solutions like cash forecasting, banking reconciliation, and cash route optimization. Add to that a logistics consolidation project where he used Power Automate to eliminate manual scheduling bottlenecks, and a consulting engagement where he trained a company&rsquo;s own leadership and development team to get full value out of a system they already owned. It&rsquo;s work that required the same thing every SMB owner needs today: turning complexity into systems that actually run.</p>
+        <p style="color:var(--mist);">Jay built his technical foundation in the Microsoft ecosystem &mdash; SQL Server, T-SQL, SSIS, SSRS, and VB/VB.NET &mdash; and spent over a decade leading development teams, translating enterprise-grade solutions into results that non-technical stakeholders could actually use and trust. He founded AFI to bring that same discipline to businesses that have never had access to it: local shops, service providers, and owner-operators who&rsquo;ve been making decisions on gut instinct because that&rsquo;s all they&rsquo;ve had time for.</p>
+        <p style="color:var(--mist);">Jay has lived in Northeast Wisconsin his whole life &mdash; he knows this region because he&rsquo;s never left it, though travel is high on the list once the timing is right. But that local footing isn&rsquo;t the whole story: more than a decade of &ldquo;side hustles&rdquo; has taught him just as much about community as 25 years in enterprise IT taught him about systems. He&rsquo;s had the honor of working alongside entrepreneurs from all across the country, currently as a Hugh &amp; Grace advocate, and that same networked understanding of people and momentum sits behind how AFI thinks about who it can serve.</p>
+        <p style="color:var(--mist);">It&rsquo;s the same instinct he&rsquo;s had since he started playing soccer at four years old, and carried into more than a dozen years coaching youth and high school soccer in the region &mdash; that a group of sharp individual skills only becomes something powerful once it works as a team. That&rsquo;s as true on the field as it is in a business trying to get five disconnected tools working like one system.</p>
+        <p style="color:var(--mist);">Jay operates by one guiding rule, borrowed from the name of his company: <strong>Always Forward.</strong> Find one small, manageable thing to move forward on each day, and progress compounds. It&rsquo;s the principle behind every system AFI builds &mdash; and the one Jay lives by, on and off the clock.</p>
+        <div class="founder-note" style="background:rgba(255,255,255,0.04); border-left:3px solid var(--teal-soft); color:#dfe7ee;">&ldquo;Always Forward. Find one small, manageable thing to move forward on each day, and progress compounds.&rdquo;</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">
+      <span class="logo-chip"><img src="img/afi-logo-mark.png" alt="AFI mark" class="logo-mark-img"></span>
+      <div class="logo-text" style="color:#fff;">AF<span>I</span></div>
+    </div>
+    <div class="fine">&copy; 2026 ALWAYS FORWARD INTELLIGENCE</div>
+  </div>
+</footer>
+
+</body>
+</html>
