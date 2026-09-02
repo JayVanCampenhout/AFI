@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simply Meant 2B Custom Graphyx — Custom Apparel, Drinkware &amp; Decals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Karla:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2A2724;
+    --ink-soft:#5A5449;
+    --paper:#EFE7D8;
+    --paper-dim:#E4DAC6;
+    --teal:#2F8F86;
+    --marigold:#E3A73A;
+    --coral:#C1443A;
+    --line:#D8CCB2;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Karla',sans-serif;
+    font-size:17px;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Anton',sans-serif;
+    font-weight:400;
+    letter-spacing:0.01em;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  /* subtle canvas-weave texture */
+  .texture{
+    background-image:
+      repeating-linear-gradient(45deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 6px),
+      repeating-linear-gradient(-45deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 6px);
+  }
+
+  /* ---------- header ---------- */
+  header{
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .wordmark{
+    font-family:'Anton',sans-serif;
+    font-size:22px;
+    line-height:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .wordmark span.sub{
+    font-family:'Karla',sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+    font-weight:700;
+    letter-spacing:0.03em;
+  }
+  header nav a{
+    text-decoration:none;
+    font-weight:700;
+    font-size:15px;
+    margin-left:22px;
+    padding-bottom:2px;
+    border-bottom:2px solid transparent;
+    transition:border-color .15s ease;
+  }
+  header nav a:hover{border-color:var(--coral);}
+
+  /* ---------- hero ---------- */
+  .hero{padding:64px 0 56px;position:relative;overflow:hidden;}
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(40px,6vw,66px);
+    line-height:0.98;
+  }
+  .hero p.lede{
+    margin-top:20px;
+    font-size:19px;
+    max-width:44ch;
+    color:var(--ink-soft);
+  }
+  .hero .location{
+    margin-top:6px;
+    font-size:14px;
+    font-weight:700;
+    color:var(--teal);
+  }
+  .cta-row{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    font-family:'Karla',sans-serif;
+    font-weight:700;
+    font-size:15px;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:3px;
+    border:2px solid var(--ink);
+    transition:transform .12s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn.primary{background:var(--coral);border-color:var(--coral);color:var(--paper);}
+  .btn.secondary{background:transparent;color:var(--ink);}
+
+  /* scattered swatch stickers in hero */
+  .sticker-field{position:relative;height:340px;}
+  .sticker{
+    position:absolute;
+    border-radius:8px;
+    box-shadow:0 6px 14px rgba(0,0,0,0.18);
+    display:flex;
+    align-items:flex-end;
+    padding:12px;
+    font-weight:700;
+    font-size:13px;
+    color:var(--paper);
+  }
+  .sticker.s1{background:var(--teal);width:150px;height:150px;top:0;left:20px;transform:rotate(-7deg);}
+  .sticker.s2{background:var(--marigold);width:130px;height:130px;top:30px;right:10px;transform:rotate(6deg);color:var(--ink);}
+  .sticker.s3{background:var(--coral);width:170px;height:120px;bottom:10px;left:60px;transform:rotate(4deg);}
+  .sticker.s4{background:var(--ink);width:110px;height:110px;bottom:0;right:40px;transform:rotate(-5deg);}
+
+  /* ---------- swatch strip: what we make ---------- */
+  section{padding:70px 0;}
+  .section-head{max-width:56ch;margin-bottom:38px;}
+  .section-head h2{font-size:clamp(28px,4vw,38px);}
+  .section-head p{color:var(--ink-soft);margin-top:12px;font-size:16px;}
+
+  .swatch-strip{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+  }
+  .swatch{
+    border-radius:6px;
+    padding:22px 18px;
+    min-height:190px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    box-shadow:0 4px 0 rgba(0,0,0,0.12);
+  }
+  .swatch:nth-child(1){background:var(--teal);color:var(--paper);transform:rotate(-1.5deg);}
+  .swatch:nth-child(2){background:var(--marigold);color:var(--ink);transform:rotate(1deg);}
+  .swatch:nth-child(3){background:var(--ink);color:var(--paper);transform:rotate(-1deg);}
+  .swatch:nth-child(4){background:var(--coral);color:var(--paper);transform:rotate(1.5deg);}
+  .swatch h3{font-size:21px;line-height:1.05;}
+  .swatch p{font-size:14px;margin:10px 0 0;opacity:0.92;}
+
+  /* ---------- work order ticket ---------- */
+  .ticket-section{background:var(--paper-dim);}
+  .ticket{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:4px;
+    max-width:640px;
+    margin:0 auto;
+    padding:8px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.10);
+  }
+  .ticket-inner{
+    border:1px dashed var(--ink-soft);
+    border-radius:2px;
+    padding:34px 36px 30px;
+  }
+  .ticket-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    border-bottom:1px solid var(--line);
+    padding-bottom:16px;
+    margin-bottom:22px;
+  }
+  .ticket-head h3{font-size:22px;}
+  .ticket-head .no{font-size:13px;color:var(--ink-soft);font-family:'Karla',sans-serif;}
+  .ticket-row{
+    display:grid;
+    grid-template-columns:40px 1fr;
+    gap:16px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .ticket-row:last-of-type{border-bottom:none;}
+  .ticket-row .num{
+    font-family:'Anton',sans-serif;
+    font-size:26px;
+    color:var(--coral);
+  }
+  .ticket-row h4{margin:0 0 4px;font-size:17px;font-weight:700;font-family:'Karla',sans-serif;}
+  .ticket-row p{margin:0;color:var(--ink-soft);font-size:15px;}
+
+  /* ---------- community ribbon ---------- */
+  .ribbon-wrap{padding:0;}
+  .ribbon{
+    background:var(--ink);
+    color:var(--paper);
+    padding:36px 0;
+  }
+  .ribbon .wrap{display:flex;align-items:center;gap:26px;flex-wrap:wrap;}
+  .ribbon .badge{
+    flex-shrink:0;
+    width:74px;height:74px;
+    border-radius:50%;
+    background:var(--marigold);
+    color:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Anton',sans-serif;
+    font-size:13px;
+    text-align:center;
+    line-height:1.1;
+    padding:6px;
+  }
+  .ribbon p{margin:0;max-width:62ch;font-size:16px;}
+  .ribbon strong{color:var(--marigold);}
+
+  /* ---------- gallery note (categories detail) ---------- */
+  .detail-list{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+    margin-top:10px;
+  }
+  .detail-item h4{font-size:16px;margin:0 0 6px;}
+  .detail-item p{margin:0;font-size:14px;color:var(--ink-soft);}
+  .detail-item .dot{
+    display:inline-block;width:8px;height:8px;border-radius:50%;
+    background:var(--teal);margin-right:8px;
+  }
+
+  /* ---------- footer / contact ---------- */
+  footer{
+    background:var(--ink);
+    color:var(--paper);
+    padding:56px 0 34px;
+  }
+  footer h2{
+    font-size:clamp(30px,5vw,44px);
+    color:var(--paper);
+    max-width:14ch;
+  }
+  footer .contact-grid{
+    margin-top:34px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  footer .contact-item{border-top:1px solid rgba(239,231,216,0.25);padding-top:14px;}
+  footer .contact-item .label{font-size:12px;font-weight:700;color:var(--marigold);}
+  footer .contact-item a, footer .contact-item span{
+    display:block;margin-top:6px;font-size:16px;text-decoration:none;color:var(--paper);
+  }
+  footer .contact-item a:hover{color:var(--teal);}
+  footer .fine{
+    margin-top:44px;
+    font-size:13px;
+    color:rgba(239,231,216,0.55);
+  }
+
+  @media (max-width:760px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .sticker-field{height:260px;margin-top:10px;}
+    .swatch-strip{grid-template-columns:repeat(2,1fr);}
+    .detail-list{grid-template-columns:1fr;}
+    footer .contact-grid{grid-template-columns:1fr;}
+    header nav{display:none;}
+  }
+</style>
+</head>
+<body class="texture">
+
+  <header>
+    <div class="wrap">
+      <div class="wordmark">Simply Meant 2B <span class="sub">Custom Graphyx</span></div>
+      <nav>
+        <a href="#make">What we make</a>
+        <a href="#how">How it works</a>
+        <a href="#contact">Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>You dream it up.<br>She prints it.</h1>
+        <p class="lede">Custom shirts, tumblers, decals, and pretty much anything else you can put a design on — made to order out of a family shop in Kaukauna, Wisconsin.</p>
+        <p class="location">Kaukauna, WI · no order too small</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#contact">Start an order</a>
+          <a class="btn secondary" href="#make">See what we make</a>
+        </div>
+      </div>
+      <div class="sticker-field">
+        <div class="sticker s1">Apparel</div>
+        <div class="sticker s2">Drinkware</div>
+        <div class="sticker s3">Decals &amp; stickers</div>
+        <div class="sticker s4">Your idea</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="make">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What we make</h2>
+        <p>If it can take a design, it can probably be a Simply Meant 2B order. A few of the most requested.</p>
+      </div>
+      <div class="swatch-strip">
+        <div class="swatch">
+          <h3>Apparel</h3>
+          <p>Tees, hoodies, and blankets in your size and color.</p>
+        </div>
+        <div class="swatch">
+          <h3>Drinkware</h3>
+          <p>Tumblers and mugs, personalized front to back.</p>
+        </div>
+        <div class="swatch">
+          <h3>Decals &amp; stickers</h3>
+          <p>For cars, coolers, laptops — anywhere they'll stick.</p>
+        </div>
+        <div class="swatch">
+          <h3>Keychains &amp; more</h3>
+          <p>Pens, keychains, and promo pieces for events or gifts.</p>
+        </div>
+      </div>
+
+      <div class="detail-list">
+        <div class="detail-item"><h4><span class="dot"></span>Sports &amp; fan gear</h4><p>Team spirit, Nike-style designs, and workout wear.</p></div>
+        <div class="detail-item"><h4><span class="dot"></span>Milestones</h4><p>Graduation, birthdays, and family celebrations.</p></div>
+        <div class="detail-item"><h4><span class="dot"></span>Just for fun</h4><p>Comic books, kids' favorites, and whatever made you laugh.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ticket-section" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How it works</h2>
+        <p>Three steps, same as if you walked up to the press yourself.</p>
+      </div>
+      <div class="ticket">
+        <div class="ticket-inner">
+          <div class="ticket-head">
+            <h3>Order ticket</h3>
+            <span class="no">Simply Meant 2B</span>
+          </div>
+          <div class="ticket-row">
+            <span class="num">1</span>
+            <div>
+              <h4>Pick your item</h4>
+              <p>Shirt, hoodie, tumbler, decal — whatever you're putting the design on, and what size or color.</p>
+            </div>
+          </div>
+          <div class="ticket-row">
+            <span class="num">2</span>
+            <div>
+              <h4>Pick your design</h4>
+              <p>Choose from thousands of ready designs, or send your own idea to press instead.</p>
+            </div>
+          </div>
+          <div class="ticket-row">
+            <span class="num">3</span>
+            <div>
+              <h4>She presses it</h4>
+              <p>Made to order and ready for pickup or delivery — no order too small.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ribbon-wrap">
+    <div class="ribbon">
+      <div class="wrap">
+        <div class="badge">All<br>American<br>Garage</div>
+        <p>Simply Meant 2B works alongside <strong>The All American Garage Inc.</strong>, a Kaukauna-based nonprofit supporting local first responders and veterans — sometimes right down to the shirt on your back.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer id="contact">
+    <div class="wrap">
+      <h2>Have an idea? Let's press it.</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="label">Message on Facebook</span>
+          <a href="https://www.facebook.com/Simplymeant2Bcustomgraphyx/" target="_blank" rel="noopener">Simply Meant 2B Custom Graphyx</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Message on Instagram</span>
+          <a href="https://www.instagram.com/sm2bgraphyx" target="_blank" rel="noopener">@sm2bgraphyx</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Email</span>
+          <a href="mailto:simplymeant2bcustomgraphyx@gmail.com">simplymeant2bcustomgraphyx@gmail.com</a>
+        </div>
+      </div>
+      <p class="fine">Kaukauna, Wisconsin · family owned and operated</p>
+    </div>
+  </footer>
+
+</body>
+</html>
