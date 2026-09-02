@@ -82,17 +82,6 @@
     transition:color .2s;
   }
   .nav-links a:hover{color:var(--navy-deep);}
-  .nav-cta{
-    background:var(--electric);
-    color:#fff !important;
-    padding:10px 20px;
-    border-radius:6px;
-    font-size:0.88rem;
-    font-weight:600;
-    transition:background .2s, transform .2s;
-    white-space:nowrap;
-  }
-  .nav-cta:hover{background:#4a80f0; transform:translateY(-1px);}
   .nav-right{display:flex; align-items:center; gap:18px;}
   .nav-toggle{
     display:none;
@@ -399,7 +388,8 @@
     .system-body{grid-template-columns:1fr;}
     .founder-body{grid-template-columns:1fr;}
     .founder-badge{width:120px; height:120px; font-size:1.8rem;}
-    .nav-links a:not(.nav-cta){display:none;}
+    nav.wrap{justify-content:flex-start; gap:14px;}
+    .nav-links{display:none;}
     .nav-toggle{display:block;}
     .logo-full-img{height:38px;}
   }
@@ -417,6 +407,7 @@
 
 <header>
   <nav class="wrap">
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <a href="index.html" class="logo">
       <img src="img/afi-logo-full.png" alt="Always Forward Intelligence — Built on Experience. Powered by AI." class="logo-full-img">
     </a>
@@ -425,8 +416,6 @@
       <a href="offerings.html">Offerings</a>
       <a href="how-it-works.html" style="color:var(--teal-soft); font-weight:700;">How it works</a>
       <a href="about.html">About</a>
-      <a href="scorecard.html" target="_blank" rel="noopener" class="nav-cta">Get my free scorecard</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
@@ -434,6 +423,7 @@
     <a href="offerings.html">Offerings</a>
     <a href="how-it-works.html" style="color:var(--teal-soft); font-weight:700;">How it works</a>
     <a href="about.html">About</a>
+    <a href="scorecard.html" target="_blank" rel="noopener">Get my free scorecard</a>
   </div>
 </header>
 <script>
