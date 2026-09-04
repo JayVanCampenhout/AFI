@@ -48,10 +48,47 @@
 
   /* ---------- header ---------- */
   header{
-    padding:22px 0;
+    padding:18px 0;
     border-bottom:1px solid var(--line);
+    position:relative;
   }
-  header .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  header .wrap{display:flex;align-items:center;gap:16px;}
+  .menu-toggle{
+    display:none;
+    order:1;
+    width:38px;height:38px;
+    flex-shrink:0;
+    background:transparent;
+    border:2px solid var(--ink);
+    border-radius:3px;
+    padding:0;
+    cursor:pointer;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+  }
+  .menu-toggle span{
+    display:block;width:18px;height:2px;background:var(--ink);
+    transition:transform .18s ease, opacity .18s ease;
+  }
+  .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+  .brand-link{
+    order:2;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+  }
+  .logo-mark{
+    width:46px;height:46px;
+    border-radius:6px;
+    object-fit:cover;
+    flex-shrink:0;
+    background:var(--paper-dim);
+  }
   .wordmark{
     font-family:'Anton',sans-serif;
     font-size:22px;
@@ -66,6 +103,7 @@
     font-weight:700;
     letter-spacing:0.03em;
   }
+  header nav{order:3;margin-left:auto;}
   header nav a{
     text-decoration:none;
     font-weight:700;
@@ -117,23 +155,20 @@
   .btn.primary{background:var(--coral);border-color:var(--coral);color:var(--paper);}
   .btn.secondary{background:transparent;color:var(--ink);}
 
-  /* scattered swatch stickers in hero */
+  /* scattered swatch stickers in hero — swap the 4 images monthly, no code changes needed */
   .sticker-field{position:relative;height:340px;}
   .sticker{
     position:absolute;
     border-radius:8px;
     box-shadow:0 6px 14px rgba(0,0,0,0.18);
-    display:flex;
-    align-items:flex-end;
-    padding:12px;
-    font-weight:700;
-    font-size:13px;
-    color:var(--paper);
+    overflow:hidden;
+    background:var(--paper-dim);
   }
-  .sticker.s1{background:var(--teal);width:150px;height:150px;top:0;left:20px;transform:rotate(-7deg);}
-  .sticker.s2{background:var(--marigold);width:130px;height:130px;top:30px;right:10px;transform:rotate(6deg);color:var(--ink);}
-  .sticker.s3{background:var(--coral);width:170px;height:120px;bottom:10px;left:60px;transform:rotate(4deg);}
-  .sticker.s4{background:var(--ink);width:110px;height:110px;bottom:0;right:40px;transform:rotate(-5deg);}
+  .sticker img{width:100%;height:100%;object-fit:cover;}
+  .sticker.s1{width:150px;height:150px;top:0;left:20px;transform:rotate(-7deg);}
+  .sticker.s2{width:130px;height:130px;top:30px;right:10px;transform:rotate(6deg);}
+  .sticker.s3{width:170px;height:150px;bottom:10px;left:60px;transform:rotate(4deg);}
+  .sticker.s4{width:130px;height:130px;bottom:0;right:40px;transform:rotate(-5deg);}
 
   /* ---------- swatch strip: what we make ---------- */
   section{padding:70px 0;}
@@ -147,20 +182,36 @@
     gap:20px;
   }
   .swatch{
+    position:relative;
+    overflow:hidden;
+    background-size:cover;
+    background-position:center;
     border-radius:6px;
-    padding:22px 18px;
+    padding:18px;
     min-height:190px;
     display:flex;
     flex-direction:column;
-    justify-content:space-between;
+    justify-content:flex-end;
+    color:var(--paper);
     box-shadow:0 4px 0 rgba(0,0,0,0.12);
   }
-  .swatch:nth-child(1){background:var(--teal);color:var(--paper);transform:rotate(-1.5deg);}
-  .swatch:nth-child(2){background:var(--marigold);color:var(--ink);transform:rotate(1deg);}
-  .swatch:nth-child(3){background:var(--ink);color:var(--paper);transform:rotate(-1deg);}
-  .swatch:nth-child(4){background:var(--coral);color:var(--paper);transform:rotate(1.5deg);}
+  .swatch::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:0;
+  }
+  .swatch h3, .swatch p{position:relative;z-index:1;}
+  .swatch:nth-child(1){background-image:url('images/swatch-apparel.jpg');transform:rotate(-1.5deg);}
+  .swatch:nth-child(1)::before{background:linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,.1) 55%), var(--teal);opacity:.68;}
+  .swatch:nth-child(2){background-image:url('images/swatch-drinkware.jpg');transform:rotate(1deg);}
+  .swatch:nth-child(2)::before{background:linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,.1) 55%), var(--marigold);opacity:.68;}
+  .swatch:nth-child(3){background-image:url('images/swatch-decals.jpg');transform:rotate(-1deg);}
+  .swatch:nth-child(3)::before{background:linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,.1) 55%), var(--ink);opacity:.72;}
+  .swatch:nth-child(4){background-image:url('images/swatch-keychains.jpg');transform:rotate(1.5deg);}
+  .swatch:nth-child(4)::before{background:linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,.1) 55%), var(--coral);opacity:.68;}
   .swatch h3{font-size:21px;line-height:1.05;}
-  .swatch p{font-size:14px;margin:10px 0 0;opacity:0.92;}
+  .swatch p{font-size:14px;margin:10px 0 0;opacity:0.95;}
 
   /* ---------- work order ticket ---------- */
   .ticket-section{background:var(--paper-dim);}
@@ -277,7 +328,24 @@
     .swatch-strip{grid-template-columns:repeat(2,1fr);}
     .detail-list{grid-template-columns:1fr;}
     footer .contact-grid{grid-template-columns:1fr;}
-    header nav{display:none;}
+
+    .menu-toggle{display:flex;}
+    .wordmark{font-size:19px;}
+    header nav{
+      order:4;
+      margin-left:0;
+      flex-basis:100%;
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .22s ease;
+    }
+    header nav.open{max-height:220px;}
+    header nav a{
+      display:block;
+      margin:0;
+      padding:12px 2px;
+      border-bottom:1px solid var(--line);
+    }
   }
 </style>
 </head>
@@ -285,8 +353,14 @@
 
   <header>
     <div class="wrap">
-      <div class="wordmark">Simply Meant 2B <span class="sub">Custom Graphyx</span></div>
-      <nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="brand-link" href="#">
+        <img class="logo-mark" src="images/logo.png" alt="Simply Meant 2B Custom Graphyx logo">
+        <div class="wordmark">Simply Meant 2B <span class="sub">Custom Graphyx</span></div>
+      </a>
+      <nav id="siteNav">
         <a href="#make">What we make</a>
         <a href="#how">How it works</a>
         <a href="#contact">Order</a>
@@ -305,11 +379,12 @@
           <a class="btn secondary" href="#make">See what we make</a>
         </div>
       </div>
+      <!-- Seasonal rotation: replace these 4 image files each month (same filenames, new photos) -->
       <div class="sticker-field">
-        <div class="sticker s1">Apparel</div>
-        <div class="sticker s2">Drinkware</div>
-        <div class="sticker s3">Decals &amp; stickers</div>
-        <div class="sticker s4">Your idea</div>
+        <div class="sticker s1"><img src="images/hero-sticker-1.jpg" alt="Recent custom design"></div>
+        <div class="sticker s2"><img src="images/hero-sticker-2.jpg" alt="Recent custom design"></div>
+        <div class="sticker s3"><img src="images/hero-sticker-3.jpg" alt="Recent custom design"></div>
+        <div class="sticker s4"><img src="images/hero-sticker-4.jpg" alt="Recent custom design"></div>
       </div>
     </div>
   </section>
@@ -415,5 +490,19 @@
     </div>
   </footer>
 
+  <script>
+    var toggle = document.getElementById('menuToggle');
+    var nav = document.getElementById('siteNav');
+    toggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
 </body>
 </html>
