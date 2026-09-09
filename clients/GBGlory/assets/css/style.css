@@ -1,0 +1,334 @@
+/* ==========================================================================
+   Green Bay Glory — shared design system
+   Brand colors: Mardi Gras purple, green, and gold (the club's own naming),
+   plus ink black and bone. Two accent lanes (purple/green) give the Women's
+   and Men's sections distinct wayfinding while sharing one gold CTA color
+   and one crest, matching the unified two-team club identity.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Public+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --ink: #1A1517;
+  --ink-soft: #241F21;
+  --purple: #662D92;
+  --purple-soft: #8A54B3;
+  --green: #0D783F;
+  --green-soft: #2E9A5C;
+  --gold: #F6C12F;
+  --gold-soft: #F9D36B;
+  --bone: #F3EFE6;
+  --bone-dim: #E7E0D2;
+  --white: #FFFFFF;
+  --ink-70: rgba(26, 21, 23, 0.7);
+  --ink-45: rgba(26, 21, 23, 0.45);
+  --white-70: rgba(255, 255, 255, 0.7);
+  --white-45: rgba(255, 255, 255, 0.45);
+
+  --font-display: "Big Shoulders Display", sans-serif;
+  --font-body: "Public Sans", sans-serif;
+
+  --max-width: 1180px;
+  --edge: clamp(20px, 5vw, 64px);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.96;
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--edge);
+  padding-right: var(--edge);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+/* ---------------------------------- utility strip ---------------------------------- */
+.utility-bar {
+  background: var(--ink);
+  color: var(--white-70);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.utility-bar .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  gap: 16px;
+  overflow-x: auto;
+}
+.utility-bar a { white-space: nowrap; }
+.utility-bar a:hover { color: var(--gold-soft); }
+.utility-bar .socials { display: flex; gap: 14px; }
+
+/* ---------------------------------- header / nav ---------------------------------- */
+.site-header {
+  background: var(--white);
+  border-bottom: 3px solid var(--ink);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  gap: 24px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
+}
+.brand .crest {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  object-fit: contain;
+  flex: none;
+}
+.brand span.sub {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-70);
+  margin-top: 2px;
+}
+
+.main-nav { display: flex; align-items: center; gap: 4px; }
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0; padding: 0;
+  gap: 4px;
+}
+.main-nav a {
+  display: inline-block;
+  padding: 10px 14px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 3px;
+}
+.main-nav a:hover { background: var(--bone); }
+.main-nav .team-link-men:hover { color: var(--green); }
+.main-nav .team-link-women:hover { color: var(--purple); }
+.main-nav a.current-men { color: var(--white); background: var(--green); }
+.main-nav a.current-women { color: var(--white); background: var(--purple); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  width: 44px; height: 40px;
+  cursor: pointer;
+  padding: 0;
+}
+.nav-toggle span, .nav-toggle::before, .nav-toggle::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--ink);
+  margin: 9px 10px;
+}
+
+@media (max-width: 920px) {
+  .nav-toggle { display: block; }
+  .main-nav {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--white);
+    border-bottom: 3px solid var(--ink);
+    flex-direction: column;
+    align-items: stretch;
+    display: none;
+  }
+  .main-nav.open { display: flex; }
+  .main-nav ul { flex-direction: column; padding: 8px var(--edge) 18px; gap: 2px; }
+  .main-nav a { padding: 12px 8px; border-bottom: 1px solid var(--bone-dim); }
+}
+
+/* ---------------------------------- buttons ---------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 13px 24px;
+  border-radius: 3px;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+.btn-gold { background: var(--gold); color: var(--ink); }
+.btn-gold:hover { background: var(--gold-soft); }
+.btn-purple { background: var(--purple); color: var(--white); }
+.btn-purple:hover { background: var(--purple-soft); }
+.btn-green { background: var(--green); color: var(--white); }
+.btn-green:hover { background: var(--green-soft); }
+.btn-outline-light { border-color: var(--white-45); color: var(--white); }
+.btn-outline-light:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+.btn-outline-dark { border-color: var(--ink); color: var(--ink); }
+.btn-outline-dark:hover { background: var(--ink); color: var(--white); }
+.btn-ink { background: var(--ink); color: var(--white); }
+.btn-ink:hover { background: var(--ink-soft); }
+
+/* ---------------------------------- sections generic ---------------------------------- */
+section { padding: clamp(48px, 8vw, 96px) 0; }
+.section-bone { background: var(--bone); }
+.section-ink { background: var(--ink); color: var(--white); }
+.section-ink h2, .section-ink h3 { color: var(--white); }
+
+.kicker {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--ink-70);
+  margin-bottom: 10px;
+}
+.section-ink .kicker { color: var(--white-70); }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+/* ---------------------------------- footer ---------------------------------- */
+.site-footer { background: var(--ink); color: var(--white-70); }
+.site-footer .wrap { padding-top: 56px; padding-bottom: 32px; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.footer-grid h4 {
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+}
+.footer-grid ul { list-style: none; margin: 0; padding: 0; }
+.footer-grid li { margin-bottom: 8px; }
+.footer-grid a:hover { color: var(--gold-soft); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 22px;
+  font-size: 0.85rem;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-bottom .socials { display: flex; gap: 16px; }
+.footer-bottom .socials a { font-weight: 700; }
+
+@media (max-width: 760px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------------------------------- placeholder art blocks ---------------------------------- */
+.art-block {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  min-height: 220px;
+  color: var(--white);
+}
+.art-block .art-label {
+  position: relative;
+  z-index: 2;
+  padding: 16px 18px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: rgba(0,0,0,0.35);
+  width: 100%;
+}
+.art-men {
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0 2px, transparent 2px 26px),
+    linear-gradient(160deg, var(--green) 0%, var(--ink) 78%);
+}
+.art-women {
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0 2px, transparent 2px 26px),
+    linear-gradient(160deg, var(--purple) 0%, var(--ink) 78%);
+}
+.art-pitch {
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 40px, transparent 40px 80px),
+    linear-gradient(160deg, var(--gold) 0%, var(--ink) 85%);
+}
+
+/* ---------------------------------- brand sunburst motif ---------------------------------- */
+.sunburst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-conic-gradient(from 0deg at 82% 30%, rgba(246,193,47,0.14) 0deg 3deg, transparent 3deg 16deg);
+  mask-image: radial-gradient(circle at 82% 30%, black 0%, transparent 62%);
+  -webkit-mask-image: radial-gradient(circle at 82% 30%, black 0%, transparent 62%);
+}
+.hero-crest-large {
+  width: clamp(120px, 16vw, 200px);
+  height: auto;
+}
