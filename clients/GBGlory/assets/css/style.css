@@ -161,6 +161,8 @@ p:last-child { margin-bottom: 0; }
   border-radius: 3px;
 }
 .main-nav a:hover { background: var(--bone); }
+.main-nav .nav-logo-link { display: flex; align-items: center; padding-top: 6px; padding-bottom: 6px; }
+.main-nav .nav-logo-link img { height: 28px; width: auto; display: block; }
 .main-nav .team-link-men:hover { color: var(--green); }
 .main-nav .team-link-women:hover { color: var(--purple); }
 .main-nav a.current-men { color: var(--white); background: var(--green); }
