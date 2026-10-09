@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Always Forward Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#061527;
+    --navy:#0A1F3D;
+    --teal:#0E7C7B;
+    --teal-soft:#12a3a1;
+    --electric:#2F6FED;
+    --paper:#F5F7FA;
+    --ink:#16212E;
+    --mist:#B9C8D8;
+    --line:#1C3355;
+    --max:1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  img,svg{display:block;}
+  button{font-family:inherit; cursor:pointer;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:#ffffff;
+    border-bottom:1px solid #e6eaf0;
+    box-shadow:0 2px 16px rgba(6,21,39,0.06);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:92px;
+  }
+  .logo{display:flex; align-items:center; gap:10px;}
+  .logo-full-img{height:46px; width:auto; display:block;}
+  .logo-chip{
+    display:flex; align-items:center; justify-content:center;
+    width:36px; height:36px;
+    background:#fff;
+    border-radius:8px;
+    padding:5px;
+  }
+  .logo-mark-img{width:100%; height:auto;}
+  .logo-text{
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    font-size:1.15rem;
+    color:#fff;
+    letter-spacing:0.02em;
+  }
+  .logo-text span{color:var(--teal-soft);}
+  .nav-links{display:flex; align-items:center; gap:36px;}
+  .nav-links a{
+    color:#3d4a5c;
+    font-size:0.92rem;
+    font-weight:500;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--navy-deep);}
+  .nav-right{display:flex; align-items:center; gap:18px;}
+  .nav-toggle{
+    display:none;
+    background:none; border:none; padding:8px;
+    cursor:pointer;
+  }
+  .nav-toggle span{
+    display:block; width:22px; height:2px; background:var(--navy-deep);
+    margin:5px 0; transition:transform .2s, opacity .2s;
+  }
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu{
+    display:none;
+    flex-direction:column;
+    background:#fff;
+    border-top:1px solid #e6eaf0;
+    box-shadow:0 8px 16px rgba(6,21,39,0.06);
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{
+    padding:16px 32px;
+    color:#3d4a5c;
+    font-size:0.95rem;
+    font-weight:500;
+    border-bottom:1px solid #eef1f5;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero-simple{
+    background:radial-gradient(ellipse 90% 70% at 75% 20%, #0d2a52 0%, var(--navy-deep) 55%);
+    color:#fff;
+    padding:96px 0 88px;
+  }
+  .hero-simple h1{
+    font-size:clamp(2.2rem,4vw,3.2rem);
+    line-height:1.1;
+    max-width:640px;
+    color:#fff;
+  }
+  .hero-simple h1 em{
+    font-style:normal;
+    background:linear-gradient(90deg, var(--teal-soft), var(--electric));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero-simple p{
+    margin-top:22px;
+    font-size:1.08rem;
+    line-height:1.65;
+    color:var(--mist);
+    max-width:560px;
+  }
+
+  /* ---------- FORM SECTION ---------- */
+  .contact-section{padding:88px 0;}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:56px;
+    align-items:start;
+  }
+  .contact-aside h2{font-size:clamp(1.4rem,2.4vw,1.8rem); color:var(--navy-deep); line-height:1.2; margin-bottom:16px;}
+  .contact-aside p{font-size:1rem; line-height:1.65; color:#465469; margin-bottom:18px;}
+  .contact-aside .note{
+    padding:16px 18px;
+    background:#f2f6fa;
+    border-left:3px solid var(--teal);
+    border-radius:0 8px 8px 0;
+    font-size:0.88rem;
+    color:#465469;
+  }
+
+  .success-banner{
+    display:none;
+    background:#000;
+    color:var(--teal-soft);
+    font-weight:800;
+    font-size:1rem;
+    text-align:center;
+    padding:16px 20px;
+    border-radius:10px;
+    margin-bottom:24px;
+    scroll-margin-top:112px;
+  }
+  .success-banner.show{display:block;}
+
+  .contact-card{
+    background:#fff;
+    border:1px solid #dde3ea;
+    border-radius:16px;
+    padding:40px 36px;
+    box-shadow:0 8px 24px rgba(6,21,39,0.05);
+  }
+  .field{margin-bottom:18px;}
+  .field label{display:block; font-size:0.85rem; font-weight:600; color:var(--navy); margin-bottom:7px;}
+  .field input, .field select, .field textarea{
+    width:100%; padding:12px 14px; border-radius:8px; border:1.5px solid #dde3ea;
+    font-family:'Inter', sans-serif; font-size:0.98rem; color:var(--ink); background:#fbfcfe;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:2px solid var(--electric); outline-offset:1px; border-color:var(--electric);
+  }
+  .field textarea{min-height:140px; resize:vertical; font-family:'Inter', sans-serif;}
+  .form-error{color:#c0392b; font-size:0.85rem; margin:-6px 0 14px; display:none;}
+  .form-msg{font-size:0.9rem; color:var(--teal); margin-top:14px; text-align:center;}
+  .btn-primary{
+    background:var(--electric);
+    color:#fff;
+    padding:15px 26px;
+    border-radius:7px;
+    font-weight:600;
+    font-size:0.98rem;
+    border:none;
+    transition:background .2s, transform .2s;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary:hover{background:#4a80f0; transform:translateY(-2px);}
+  .btn-primary:disabled{background:#9db3d6; cursor:default; transform:none;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-deep); border-top:1px solid rgba(255,255,255,0.08); padding:40px 0;}
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+  }
+  footer .fine{color:var(--mist); font-size:0.82rem; font-family:'JetBrains Mono', monospace;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    nav.wrap{justify-content:flex-start; gap:14px;}
+    .nav-links{display:none;}
+    .nav-toggle{display:block;}
+    .logo-full-img{height:38px;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:560px){
+    .hero-simple{padding:64px 0 56px;}
+    .contact-section{padding:56px 0;}
+    .contact-card{padding:28px 22px;}
+  }
+  :focus-visible{outline:2px solid var(--electric); outline-offset:3px;}
+
+  /* ---------- PHONE FIXES ---------- */
+  @media (max-width:560px){
+    nav.wrap .logo{min-width:0; flex:1;}
+    nav.wrap .logo-full-img{height:auto; max-height:34px; max-width:100%;}
+    .offer-grid > .offer-card[style*="grid-template-columns"]{grid-template-columns:1fr !important; gap:18px !important; padding:30px 22px !important;}
+    .offer-grid > .offer-card > div[style*="border-left"]{border-left:none !important; padding-left:0 !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="index.html" class="logo">
+      <img src="img/afi-logo-full.png" alt="Always Forward Intelligence — Built on Experience. Powered by AI." class="logo-full-img">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="offerings.html">Offerings</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" style="color:var(--teal-soft); font-weight:700;">Contact</a>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="offerings.html">Offerings</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" style="color:var(--teal-soft); font-weight:700;">Contact</a>
+    <a href="offerings.html#websites">Website pricing</a>
+  </div>
+</header>
+<script>
+  var navToggle = document.getElementById('navToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', function(){
+    var isOpen = mobileMenu.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+<section class="hero-simple">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--teal-soft); margin-bottom:20px;">Get in touch</div>
+    <h1>Tell us where you're <em>stuck.</em></h1>
+    <p>Not ready for the scorecard or the audit? Just send a message — a real person reads every one of these.</p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-aside">
+        <h2>What happens after you hit send</h2>
+        <p>Your message comes straight to us — no ticket queue, no auto-reply chain. If you'd rather start with a structured look at your business first, the free scorecard or the $88 audit are still the fastest way in.</p>
+        <div class="note">Prefer a guided starting point instead? <a href="scorecard.html" target="_blank" rel="noopener" style="color:var(--teal); font-weight:600;">Try the free AI Opportunity Scorecard →</a></div>
+      </div>
+
+      <div>
+        <div class="success-banner" id="successBanner">Thanks — your message is in! We'll be in touch soon.</div>
+        <div class="contact-card">
+          <div class="field">
+            <label>What are you interested in?</label>
+            <select id="interest">
+              <option value="">Select one…</option>
+              <option>Website package</option>
+              <option>One-Page Launch</option>
+              <option>Presence</option>
+              <option>Lead Builder</option>
+              <option>Platinum Tier</option>
+              <option>Lead Connect</option>
+              <option>Full System</option>
+              <option>Book a call</option>
+              <option>Business Efficiency Audit</option>
+              <option>Digital Clones</option>
+              <option>Video Ads</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Business name</label>
+            <input type="text" id="bizName" placeholder="e.g. Main Street Bakery">
+          </div>
+          <div class="field">
+            <label>What kind of business?</label>
+            <select id="bizType">
+              <option value="">Select one…</option>
+              <option>Home & trade services (HVAC, plumbing, electrical, landscaping, cleaning)</option>
+              <option>Professional services (legal, accounting, consulting, financial)</option>
+              <option>Health, wellness & personal care (salon, spa, fitness, medical, dental)</option>
+              <option>Automotive (sales, repair, detailing)</option>
+              <option>Retail / apparel / print shop</option>
+              <option>Real estate</option>
+              <option>Food & beverage</option>
+              <option>Hospitality & events</option>
+              <option>Nonprofit / community organization</option>
+              <option>Other local business</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Your name</label>
+            <input type="text" id="contactName" placeholder="First and last name">
+          </div>
+          <div class="field">
+            <label>Phone</label>
+            <input type="tel" id="phone" placeholder="(555) 555-0123">
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="you@business.com">
+          </div>
+          <div class="field">
+            <label>Message</label>
+            <textarea id="message" placeholder="What's on your mind?"></textarea>
+          </div>
+          <div class="form-error" id="formError">Add your name, a message, and a phone or email so we can reach you.</div>
+          <button class="btn-primary" id="sendBtn" style="width:100%; justify-content:center;">Send Message</button>
+          <div class="form-msg" id="formMsg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">
+      <span class="logo-chip"><img src="img/afi-logo-mark.png" alt="Always Forward Intelligence mark" class="logo-mark-img"></span>
+    </div>
+    <div class="fine">&copy; 2026 ALWAYS FORWARD INTELLIGENCE</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var FORMSPREE_URL = 'https://formspree.io/f/xzebrgvo';
+  var $ = function(id){ return document.getElementById(id); };
+
+  // Pre-select the interest passed from a package or call button (contact.html?interest=...)
+  try {
+    var wanted = new URLSearchParams(window.location.search).get('interest');
+    if (wanted) {
+      var opts = $('interest').options;
+      for (var i = 0; i < opts.length; i++) {
+        if (opts[i].text === wanted) { $('interest').selectedIndex = i; break; }
+      }
+      if (wanted === 'Book a call') {
+        $('message').placeholder = 'A few good days and times for a call, and what you\'d like to cover.';
+      }
+    }
+  } catch (e) {}
+
+  $('sendBtn').addEventListener('click', function(){
+    var bizName = $('bizName').value.trim();
+    var bizType = $('bizType').value;
+    var contactName = $('contactName').value.trim();
+    var phone = $('phone').value.trim();
+    var email = $('email').value.trim();
+    var message = $('message').value.trim();
+    var interest = $('interest').value;
+
+    if (!contactName || !message || (!phone && !email)){
+      $('formError').style.display = 'block';
+      return;
+    }
+    $('formError').style.display = 'none';
+
+    $('sendBtn').disabled = true;
+    $('formMsg').textContent = 'Sending…';
+
+    fetch(FORMSPREE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'New AFI Contact Form message',
+        requestType: interest ? ('Contact Form — ' + interest) : 'Contact Form',
+        interest: interest || 'Not provided',
+        businessName: bizName || 'Not provided',
+        businessType: bizType || 'Not provided',
+        contactName: contactName,
+        phone: phone || 'Not provided',
+        email: email || 'Not provided',
+        message: message
+      })
+    }).then(function(res){
+      if (!res.ok) { throw new Error('Formspree error'); }
+      $('formMsg').textContent = "Sent — we'll be in touch soon!";
+      $('successBanner').classList.add('show');
+      $('successBanner').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }).catch(function(){
+      $('formMsg').textContent = "That didn't go through — try again in a moment.";
+      $('sendBtn').disabled = false;
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

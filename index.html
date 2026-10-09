@@ -174,23 +174,26 @@
 
   /* hub diagram */
   .hub-wrap{position:relative; width:100%; aspect-ratio:1/1; max-width:460px;}
-  .hub-wrap svg{width:100%; height:100%; overflow:visible;}
+  .hub-wrap svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible;}
   .hub-line{
-    stroke:rgba(255,255,255,0.28);
-    stroke-width:1.5;
-    fill:none;
-    stroke-dasharray:300;
-    stroke-dashoffset:300;
-    animation:draw 1.4s ease forwards;
+    stroke:rgba(255,255,255,0.22); stroke-width:1.5; fill:none;
+    stroke-dasharray:1; stroke-dashoffset:1;
+    animation:draw 1.2s ease forwards;
   }
   .hub-line.l2{animation-delay:.15s;}
   .hub-line.l3{animation-delay:.3s;}
   .hub-line.l4{animation-delay:.45s;}
   @keyframes draw{ to{ stroke-dashoffset:0; } }
-  .hub-node{
-    position:absolute;
-    background:rgba(10,31,61,0.85);
-    border:1px solid rgba(255,255,255,0.16);
+
+  /* outward reach: a line extends with a dot at its tip, then retracts (SVG-timed) */
+  .hub-grow{stroke:var(--teal-soft); stroke-width:1.5; fill:none; stroke-linecap:round;
+    stroke-dasharray:1; stroke-dashoffset:1; opacity:0.85;}
+
+  /* the four pieces: positioned in the same coordinates as the lines */
+  .hub-node{position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%); z-index:2;}
+  .hub-card{
+    background:#0B1E3A;
+    border:1px solid rgba(255,255,255,0.18);
     border-radius:10px;
     padding:10px 13px;
     font-family:'JetBrains Mono', monospace;
@@ -199,25 +202,38 @@
     text-align:center;
     width:118px;
     opacity:0;
-    animation:fadeUp .6s ease forwards;
     box-shadow:0 8px 24px rgba(0,0,0,0.35);
+    animation:nodeIn .6s ease forwards, drift var(--dur,7s) ease-in-out var(--delay,0s) infinite;
   }
-  .hub-node b{display:block; color:#fff; font-family:'Inter',sans-serif; font-weight:600; font-size:0.78rem; margin-bottom:1px;}
-  @keyframes fadeUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+  .hub-card b{display:block; color:#fff; font-family:'Inter',sans-serif; font-weight:600; font-size:0.8rem; margin-bottom:1px;}
+  @keyframes nodeIn{ to{opacity:1;} }
+  @keyframes drift{
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(var(--dx,3px), var(--dy,-5px));}
+  }
+
   .hub-center{
-    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:3;
     width:104px; height:104px; border-radius:50%;
     background:linear-gradient(135deg, var(--teal), var(--electric));
     display:flex; align-items:center; justify-content:center;
     flex-direction:column;
     box-shadow:0 0 0 8px rgba(47,111,237,0.12), 0 12px 32px rgba(0,0,0,0.4);
   }
+  /* soft pulse each time a dot arrives (every 2s) */
+  .hub-center::after{
+    content:""; position:absolute; inset:0; border-radius:50%;
+    border:2px solid rgba(18,163,161,0.55); opacity:0;
+    animation:arrive 2s ease-out 3.4s infinite;
+  }
+  @keyframes arrive{
+    0%{opacity:0; transform:scale(1);}
+    8%{opacity:0.9; transform:scale(1);}
+    60%{opacity:0; transform:scale(1.35);}
+    100%{opacity:0; transform:scale(1.35);}
+  }
   .hub-center b{font-family:'Montserrat',sans-serif; font-weight:800; font-size:1.05rem; color:#fff;}
   .hub-center span{font-family:'JetBrains Mono', monospace; font-size:0.58rem; color:rgba(255,255,255,0.85); margin-top:2px;}
-  .n1{top:0; left:8%; animation-delay:.5s;}
-  .n2{top:4%; right:0; animation-delay:.65s;}
-  .n3{bottom:2%; left:0; animation-delay:.8s;}
-  .n4{bottom:0; right:6%; animation-delay:.95s;}
 
   /* ---------- TRUST STRIP ---------- */
   .trust{
@@ -390,6 +406,11 @@
   @media (max-width:900px){
     .hero .wrap{grid-template-columns:1fr; }
     .hub-wrap{max-width:340px; margin:0 auto;}
+    .hub-card{width:96px; padding:7px 8px; font-size:0.58rem;}
+    .hub-card b{font-size:0.72rem;}
+    .hub-center{width:80px; height:80px;}
+    .hub-center b{font-size:0.92rem;}
+    .hub-center span{font-size:0.5rem;}
     .offer-grid{grid-template-columns:1fr 1fr;}
     .system-body{grid-template-columns:1fr;}
     .founder-body{grid-template-columns:1fr;}
@@ -405,10 +426,114 @@
     .hero{padding:64px 0 88px;}
   }
   @media (prefers-reduced-motion: reduce){
-    .hub-line, .hub-node{animation:none; opacity:1; stroke-dashoffset:0;}
+    .hub-line{animation:none; stroke-dashoffset:0;}
+    .hub-card{animation:none; opacity:1;}
+    .hub-center::after{animation:none; opacity:0;}
   }
   :focus-visible{outline:2px solid var(--electric); outline-offset:3px;}
+
+  /* ---------- WEBSITE TEASER ---------- */
+  .web-teaser{background:#fff; border-top:1px solid #eef1f5;}
+  .web-teaser-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .web-teaser-card{border:1px solid #e3e8ef; border-radius:12px; padding:26px 24px; background:var(--paper);}
+  .web-teaser-card.featured{background:var(--navy-deep); border-color:var(--electric);}
+  .web-teaser-card .wt-name{font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal);}
+  .web-teaser-card.featured .wt-name{color:var(--teal-soft);}
+  .web-teaser-card .wt-price{font-family:'Montserrat',sans-serif; font-weight:800; font-size:2rem; color:var(--navy-deep); margin:10px 0 6px;}
+  .web-teaser-card.featured .wt-price{color:#fff;}
+  .web-teaser-card .wt-fee{font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:#7d8fa6; margin:-2px 0 6px;}
+  .web-teaser-card.featured .wt-fee{color:var(--mist);}
+  .web-teaser-card .wt-outcome{font-size:0.98rem; color:#465469;}
+  .web-teaser-card.featured .wt-outcome{color:var(--mist);}
+  .web-teaser-foot{margin-top:28px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px;}
+  .web-teaser-foot p{color:#5b6b7f; font-size:0.95rem;}
+  @media (max-width:900px){ .web-teaser-grid{grid-template-columns:1fr;} }
+
+  /* ---------- SECOND FILLED BUTTON ---------- */
+  .btn-primary.btn-teal{background:var(--teal);}
+  .btn-primary.btn-teal:hover{background:var(--teal-soft);}
+
+  /* ---------- LEAD FLOW (horizontal loop) ---------- */
+  .hflow{position:relative; padding-top:40px;
+    --fv-idle:rgba(255,255,255,0.24); --fv-line:rgba(255,255,255,0.16); --fv-markbg:var(--navy-deep);
+    --fv-text:#c9d6e3; --fv-text-lit:#fff; --fv-sub:#8fa1b6; --fv-dot:#7FE3E1;}
+  section:not(.system) .hflow{--fv-idle:#c9d3df; --fv-line:#d5dde7; --fv-markbg:var(--paper);
+    --fv-text:#3d4a5c; --fv-text-lit:var(--navy-deep); --fv-sub:#5b6b7f; --fv-dot:var(--teal);}
+  .hf-track{position:absolute; top:52px; left:8.333%; right:8.333%; height:2px; background:var(--fv-line);}
+  .hf-return{position:absolute; top:20px; left:8.333%; right:8.333%; height:33px;
+    border:1.5px dashed var(--fv-line); border-bottom:none; border-radius:16px 16px 0 0;}
+  .hf-dot{position:absolute; top:53px; left:8.333%; width:12px; height:12px; margin:-6px 0 0 -6px; border-radius:50%; z-index:3;
+    background:var(--fv-dot); box-shadow:0 0 0 5px rgba(18,163,161,0.22), 0 0 14px rgba(18,163,161,0.45);
+    animation:hfDot 14s ease-in-out infinite;}
+  @keyframes hfDot{
+    0%{left:8.333%; top:53px;}
+    5%{left:8.333%;}
+    11%{left:25.000%;} 16%{left:25.000%;}
+    22%{left:41.667%;} 27%{left:41.667%;}
+    33%{left:58.333%;} 38%{left:58.333%;}
+    44%{left:75.000%;} 49%{left:75.000%;}
+    55%{left:91.667%; top:53px;} 62%{left:91.667%; top:53px;}
+    65%{left:91.667%; top:21px;}
+    80%{left:8.333%; top:21px;}
+    83%{left:8.333%; top:53px;}
+    100%{left:8.333%; top:53px;}
+  }
+  .hf-steps{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(6,1fr);}
+  .hf-step{display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 10px;}
+  .hf-mark{width:26px; height:26px; border-radius:50%; background:var(--fv-markbg); border:2px solid var(--fv-idle);
+    position:relative; z-index:2; margin-bottom:18px; animation:hfMark 14s ease-in-out infinite;}
+  .hf-text b{display:block; font-family:'Inter',sans-serif; font-weight:600; font-size:0.98rem; line-height:1.3; color:var(--fv-text);
+    margin-bottom:8px; animation:hfText 14s ease-in-out infinite;}
+  .hf-text span{display:block; font-size:0.86rem; line-height:1.55; color:var(--fv-sub);}
+  .hf-step.s2 .hf-mark, .hf-step.s2 .hf-text b{animation-delay:1.26s;}
+  .hf-step.s3 .hf-mark, .hf-step.s3 .hf-text b{animation-delay:2.8s;}
+  .hf-step.s4 .hf-mark, .hf-step.s4 .hf-text b{animation-delay:4.34s;}
+  .hf-step.s5 .hf-mark, .hf-step.s5 .hf-text b{animation-delay:5.88s;}
+  .hf-step.s6 .hf-mark, .hf-step.s6 .hf-text b{animation-delay:7.42s;}
+  .hf-step.s1 .hf-mark{animation-name:hfMark1;}
+  .hf-step.s1 .hf-text b{animation-name:hfText1;}
+  @keyframes hfMark{
+    0%{border-color:var(--fv-idle); box-shadow:none;}
+    2%,9%{border-color:var(--teal-soft); box-shadow:0 0 0 6px rgba(18,163,161,0.18);}
+    16%,100%{border-color:var(--fv-idle); box-shadow:none;}
+  }
+  @keyframes hfText{ 0%{color:var(--fv-text);} 2%,9%{color:var(--fv-text-lit);} 16%,100%{color:var(--fv-text);} }
+  @keyframes hfMark1{
+    0%,6%{border-color:var(--teal-soft); box-shadow:0 0 0 6px rgba(18,163,161,0.18);}
+    12%,80%{border-color:var(--fv-idle); box-shadow:none;}
+    85%,100%{border-color:var(--teal-soft); box-shadow:0 0 0 6px rgba(18,163,161,0.18);}
+  }
+  @keyframes hfText1{ 0%,6%{color:var(--fv-text-lit);} 12%,80%{color:var(--fv-text);} 85%,100%{color:var(--fv-text-lit);} }
+  .hf-note{margin-top:34px; text-align:center; font-size:0.95rem; color:var(--fv-sub);}
+  .hf-note strong{color:var(--fv-text-lit);}
+  .hflow.compact .hf-text b{font-size:0.9rem; margin-bottom:0;}
+  .hflow.compact .hf-note{font-family:'JetBrains Mono',monospace; font-size:0.78rem;}
+  /* phones and narrow screens: vertical list, steps still light in order */
+  @media (max-width:900px){
+    .hflow{padding-top:0;}
+    .hf-track, .hf-return, .hf-dot{display:none;}
+    .hf-steps{grid-template-columns:1fr; position:relative;}
+    .hf-steps::before{content:""; position:absolute; left:12px; top:13px; bottom:13px; width:2px; background:var(--fv-line);}
+    .hf-step{flex-direction:row; align-items:flex-start; text-align:left; gap:16px; padding:0 0 22px 0;}
+    .hf-mark{flex:0 0 26px; margin-bottom:0;}
+    .hf-text b{margin-bottom:4px;}
+    .hflow.compact .hf-step{align-items:center; padding-bottom:16px;}
+    .hf-note{text-align:left; margin-top:8px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hf-dot{display:none;}
+    .hf-mark, .hf-text b{animation:none !important;}
+  }
+
+  /* ---------- PHONE FIXES ---------- */
+  @media (max-width:560px){
+    nav.wrap .logo{min-width:0; flex:1;}
+    nav.wrap .logo-full-img{height:auto; max-height:34px; max-width:100%;}
+    .offer-grid > .offer-card[style*="grid-template-columns"]{grid-template-columns:1fr !important; gap:18px !important; padding:30px 22px !important;}
+    .offer-grid > .offer-card > div[style*="border-left"]{border-left:none !important; padding-left:0 !important;}
+  }
 </style>
+</head>
 <body>
 
 <header>
@@ -421,13 +546,15 @@
       <a href="offerings.html">Offerings</a>
       <a href="how-it-works.html">How it works</a>
       <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <a href="offerings.html">Offerings</a>
     <a href="how-it-works.html">How it works</a>
     <a href="about.html">About</a>
-    <a href="scorecard.html" target="_blank" rel="noopener">Get my free scorecard</a>
+    <a href="contact.html">Contact</a>
+    <a href="offerings.html#websites">Website pricing</a>
   </div>
 </header>
 <script>
@@ -451,27 +578,112 @@
 <section class="hero">
   <div class="wrap">
     <div>
-      <div class="eyebrow hero-eyebrow">AI systems for your small and medium size business</div>
+      <div class="eyebrow hero-eyebrow">Intelligence-based solutions for small and growing businesses</div>
       <h1>Built on experience.<br><em>Powered by AI.</em></h1>
-      <p class="sub">Always Forward Intelligence (AFI) plugs AI into the parts of your business that already work — your website, your follow-up, your ad spend — so you get more leads and fewer things falling through the cracks. No jargon, no bloated retainer to start.</p>
+      <p class="sub">Always Forward Intelligence puts intelligent tools to work in the parts of your business that already work — your website, your follow-up, your ad spend — so you get more leads and fewer things falling through the cracks. No jargon, no bloated retainer.</p>
       <div class="hero-ctas">
-        <a href="scorecard.html" target="_blank" rel="noopener" class="btn-primary">Get my free efficiency scorecard →</a>
-        <a href="offerings.html" class="btn-ghost">See what we do</a>
+        <a href="offerings.html#websites" class="btn-primary">See website packages →</a>
+        <a href="scorecard.html" target="_blank" rel="noopener" class="btn-primary btn-teal">Get my free scorecard →</a>
       </div>
     </div>
-    <div class="hub-wrap">
-      <svg viewBox="0 0 460 460">
-        <path class="hub-line l1" d="M230,230 L230,60" />
-        <path class="hub-line l2" d="M230,230 L400,110" />
-        <path class="hub-line l3" d="M230,230 L60,340" />
-        <path class="hub-line l4" d="M230,230 L370,380" />
+    <div class="hub-wrap" aria-hidden="true">
+      <svg viewBox="0 0 460 460" id="hubSvg">
+        <path class="hub-line l1" pathLength="1" d="M230,230 L108,100" />
+        <path class="hub-line l2" pathLength="1" d="M230,230 L352,112" />
+        <path class="hub-line l3" pathLength="1" d="M230,230 L100,352" />
+        <path class="hub-line l4" pathLength="1" d="M230,230 L358,364" />
+        <path class="hub-grow g1" id="reachSide" pathLength="1" d="M284,230 L432,230" />
+        <g class="hub-dot" id="reachSideDot" opacity="0">
+          <circle r="7" fill="rgba(18,163,161,0.25)"/>
+          <circle r="3.2" fill="#7FE3E1"/>
+        </g>
+        <path class="hub-grow g2" id="reachTop" pathLength="1" d="M230,176 L230,30" />
+        <g class="hub-dot" id="reachTopDot" opacity="0">
+          <circle r="7" fill="rgba(18,163,161,0.25)"/>
+          <circle r="3.2" fill="#7FE3E1"/>
+        </g>
+        <g class="hub-dot" opacity="0">
+          <circle r="7" fill="rgba(18,163,161,0.25)"/>
+          <circle r="3.2" fill="#7FE3E1"/>
+          <animateMotion path="M108,100 L230,230" dur="8s" begin="1.4s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.25;1" calcMode="linear"/>
+          <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.04;0.21;0.25;1" dur="8s" begin="1.4s" repeatCount="indefinite"/>
+        </g>
+        <g class="hub-dot" opacity="0">
+          <circle r="7" fill="rgba(18,163,161,0.25)"/>
+          <circle r="3.2" fill="#7FE3E1"/>
+          <animateMotion path="M352,112 L230,230" dur="8s" begin="3.4s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.25;1" calcMode="linear"/>
+          <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.04;0.21;0.25;1" dur="8s" begin="3.4s" repeatCount="indefinite"/>
+        </g>
+        <g class="hub-dot" opacity="0">
+          <circle r="7" fill="rgba(18,163,161,0.25)"/>
+          <circle r="3.2" fill="#7FE3E1"/>
+          <animateMotion path="M100,352 L230,230" dur="8s" begin="5.4s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.25;1" calcMode="linear"/>
+          <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.04;0.21;0.25;1" dur="8s" begin="5.4s" repeatCount="indefinite"/>
+        </g>
+        <g class="hub-dot" opacity="0">
+          <circle r="7" fill="rgba(18,163,161,0.25)"/>
+          <circle r="3.2" fill="#7FE3E1"/>
+          <animateMotion path="M358,364 L230,230" dur="8s" begin="7.4s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.25;1" calcMode="linear"/>
+          <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.04;0.21;0.25;1" dur="8s" begin="7.4s" repeatCount="indefinite"/>
+        </g>
       </svg>
-      <div class="hub-node n1"><b>Audit</b>Efficiency scorecard</div>
-      <div class="hub-node n2"><b>Web</b>Sites &amp; landing pages</div>
-      <div class="hub-node n3"><b>Clone</b>AI spokesperson</div>
-      <div class="hub-node n4"><b>Ads</b>Short AI video</div>
-      <div class="hub-center"><b>GHL</b><span>ONE SYSTEM</span></div>
+      <div class="hub-node" style="--x:23.48%; --y:21.74%;"><div class="hub-card" style="--dur:7s; --dx:3px; --dy:-5px;"><b>Web</b>Sites &amp; landing pages</div></div>
+      <div class="hub-node" style="--x:76.52%; --y:24.35%;"><div class="hub-card" style="--dur:8.5s; --delay:-2s; --dx:-4px; --dy:4px;"><b>Audit</b>Efficiency scorecard</div></div>
+      <div class="hub-node" style="--x:21.74%; --y:76.52%;"><div class="hub-card" style="--dur:9s; --delay:-4s; --dx:4px; --dy:3px;"><b>Clone</b>Digital spokesperson</div></div>
+      <div class="hub-node" style="--x:77.83%; --y:79.13%;"><div class="hub-card" style="--dur:7.5s; --delay:-1s; --dx:-3px; --dy:-4px;"><b>Ads</b>Short video ads</div></div>
+      <div class="hub-center"><b>Hub</b><span>ONE SYSTEM</span></div>
     </div>
+    <script>
+      (function(){
+        try {
+          if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            var svg = document.getElementById('hubSvg');
+            if (svg && svg.pauseAnimations) svg.pauseAnimations();
+          }
+          else {
+            // Outward reaches: a line extends with a dot at its tip, holds, then retracts.
+            var rand = function(a, b){ return a + Math.random() * (b - a); };
+            var ease = function(t){ return t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2) / 2; };
+            var reach = function(line, dot, x0, y0, x1, y1, tOut, tHold, tBack, done){
+              line.setAttribute('d', 'M' + x0 + ',' + y0 + ' L' + x1 + ',' + y1);
+              var start = performance.now();
+              var frame = function(now){
+                var t = now - start, pr;
+                if (t < tOut) pr = ease(t / tOut);
+                else if (t < tOut + tHold) pr = 1;
+                else if (t < tOut + tHold + tBack) pr = 1 - ease((t - tOut - tHold) / tBack);
+                else { line.style.strokeDashoffset = 1; dot.setAttribute('opacity', 0); done(); return; }
+                line.style.strokeDashoffset = 1 - pr;
+                dot.setAttribute('transform', 'translate(' + (x0 + (x1 - x0) * pr) + ',' + (y0 + (y1 - y0) * pr) + ')');
+                dot.setAttribute('opacity', pr > 0.03 ? 1 : 0);
+                requestAnimationFrame(frame);
+              };
+              requestAnimationFrame(frame);
+            };
+
+            // Side reach: steady 7-second rhythm and fixed length; side (left or right) is random each time
+            var sideLine = document.getElementById('reachSide'), sideDot = document.getElementById('reachSideDot');
+            var side = function(){
+              var right = Math.random() < 0.5;
+              if (right) reach(sideLine, sideDot, 284, 230, 432, 230, 1750, 2100, 1750, function(){ setTimeout(side, 1400); });
+              else       reach(sideLine, sideDot, 176, 230, 28, 230, 1750, 2100, 1750, function(){ setTimeout(side, 1400); });
+            };
+            setTimeout(side, 2000);
+
+            // Vertical reach: random direction (up or down), random length, random hold, random pause
+            var vLine = document.getElementById('reachTop'), vDot = document.getElementById('reachTopDot');
+            var vert = function(){
+              var up = Math.random() < 0.5;
+              var len = rand(48, 146);
+              var y0 = up ? 176 : 284, y1 = up ? y0 - len : y0 + len;
+              var tOut = 700 + len * 7;
+              reach(vLine, vDot, 230, y0, 230, y1, tOut, rand(700, 2600), tOut * 0.85, function(){ setTimeout(vert, rand(1200, 7500)); });
+            };
+            setTimeout(vert, rand(2500, 5000));
+          }
+        } catch (e) {}
+      })();
+    </script>
   </div>
 </section>
 
@@ -488,33 +700,53 @@
     <div class="section-head">
       <div class="eyebrow">Where to start</div>
       <h2>Four ways in — pick the one you need first</h2>
-      <p>You don't need all of this on day one. Most people start with the audit so we both know exactly where the time and money is leaking before anything gets built.</p>
+      <p>You don't need all of this on day one. Need a website? Start with a package. Not sure where the time and money are leaking? Start with the audit, so we both know before anything gets built.</p>
     </div>
     <div class="offer-grid">
       <div class="offer-card">
         <span class="offer-tag">01 · AUDIT</span>
         <h3>Business Efficiency Audit</h3>
-        <p>A straight answer on where AI can actually save you time. A 30-question audit of how your business runs today, with a clear, prioritized action plan — not a sales pitch.</p>
-        <div class="offer-price">Starts at $16</div>
+        <p>A straight answer on where AI-based tools can actually save you time. A 30-question audit of how your business runs today, with a clear, prioritized action plan — not a sales pitch.</p>
+        <div class="offer-price">Starts at $88</div>
       </div>
       <div class="offer-card">
         <span class="offer-tag">02 · WEB</span>
         <h3>Websites &amp; Landing Pages</h3>
         <p>Clean, fast sites built to bring in leads, not just look nice — from a single landing page to a full small-business site.</p>
-        <div class="offer-price">Project-based</div>
+        <div class="offer-price"><a href="offerings.html#websites" style="color:inherit;">From $288 · see packages →</a></div>
       </div>
       <div class="offer-card">
         <span class="offer-tag">03 · CLONE</span>
-        <h3>AI Clones</h3>
+        <h3>Digital Clones</h3>
         <p>A digital version of you or your best salesperson — greets leads, answers the questions you get asked every day, and stays on-brand whether it's 2pm or 2am.</p>
         <div class="offer-price">Project-based</div>
       </div>
       <div class="offer-card">
         <span class="offer-tag">04 · ADS</span>
-        <h3>Short AI Ads</h3>
-        <p>Scroll-stopping video ads, written and produced with AI, built for the platforms your customers actually spend time on.</p>
-        <div class="offer-price">Per-ad or package</div>
+        <h3>Video Ads</h3>
+        <p>Scroll-stopping video ads, written and produced with AI tools, built for the platforms your customers actually spend time on.</p>
+        <div class="offer-price">Custom quote</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="web-teaser" id="websites">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Website packages</div>
+      <h2>A website that's the first part of your business system</h2>
+      <p>Pick the outcome you need. The page count just sets the scope.</p>
+    </div>
+    <div class="web-teaser-grid">
+      <div class="web-teaser-card"><div class="wt-name">Presence</div><div class="wt-price">$888</div><div class="wt-outcome">Get professional online.</div></div>
+      <div class="web-teaser-card featured"><div class="wt-name">Lead Builder · Most popular</div><div class="wt-price">$1,888</div><div class="wt-fee">+ monthly fee</div><div class="wt-outcome">Turn visitors into leads.</div></div>
+      <div class="web-teaser-card"><div class="wt-name">Platinum Tier</div><div class="wt-price">$3,888</div><div class="wt-fee">+ monthly fee</div><div class="wt-outcome">Turn leads into a system.</div></div>
+    </div>
+    <div class="web-teaser-foot">
+      <div><p>Need something smaller? One-Page Launch starts at $288.</p>
+      <p class="wt-caveat" style="font-size:0.8rem; color:#7d8fa6; margin-top:4px;">Final pricing is confirmed after we review your business together.</p></div>
+      <a href="offerings.html#websites" class="btn-primary">Compare website packages →</a>
     </div>
   </div>
 </section>
@@ -524,35 +756,21 @@
     <div class="section-head">
       <div class="eyebrow">The system behind it</div>
       <h2>One hub. Every piece connected.</h2>
-      <p>Most small businesses end up with a pile of disconnected tools — a website that doesn't talk to their CRM, ads that don't follow up, a phone that goes to voicemail. AFI runs everything through one platform, the way a solutions architect would build it.</p>
+      <p>Most small businesses end up with a pile of disconnected tools — a website that doesn't talk to their CRM, ads that don't follow up, a phone that goes to voicemail. We connect everything into one system, the way a solutions architect would build it.</p>
     </div>
-    <div class="system-body">
-      <ul class="system-list">
-        <li>
-          <span class="system-num">→</span>
-          <div><h4>A lead comes in</h4><p>From your website, an ad, or a walk-in you enter manually — it lands in one place, not three.</p></div>
-        </li>
-        <li>
-          <span class="system-num">→</span>
-          <div><h4>Your AI clone responds</h4><p>Answers the first questions, qualifies the lead, and books the call — before you've even seen the notification.</p></div>
-        </li>
-        <li>
-          <span class="system-num">→</span>
-          <div><h4>Follow-up happens on its own</h4><p>No more leads going cold because nobody had time to call back on a Friday afternoon.</p></div>
-        </li>
-        <li>
-          <span class="system-num">→</span>
-          <div><h4>You see what's working</h4><p>One dashboard, not five logins — so you can see which ad, which page, and which follow-up is actually driving business.</p></div>
-        </li>
-      </ul>
-      <div class="system-visual">
-        <div>WEBSITE</div>
-        <div><span class="arrow">↘</span></div>
-        <div>AD <span class="arrow">↘</span> <span class="flow">GHL HUB</span> <span class="arrow">↙</span> AUDIT</div>
-        <div><span class="arrow">↗</span></div>
-        <div>AI CLONE</div>
-        <div style="margin-top:14px; color:#7d8fa6;">// one platform, four entry points,<br>// zero disconnected tools</div>
-      </div>
+    <div class="hflow compact">
+      <div class="hf-track" aria-hidden="true"></div>
+      <div class="hf-return" aria-hidden="true"></div>
+      <span class="hf-dot" aria-hidden="true"></span>
+      <ol class="hf-steps">
+        <li class="hf-step s1"><span class="hf-mark" aria-hidden="true"></span><div class="hf-text"><b>Lead comes in</b></div></li>
+        <li class="hf-step s2"><span class="hf-mark" aria-hidden="true"></span><div class="hf-text"><b>Quick response</b></div></li>
+        <li class="hf-step s3"><span class="hf-mark" aria-hidden="true"></span><div class="hf-text"><b>Automatic follow-up</b></div></li>
+        <li class="hf-step s4"><span class="hf-mark" aria-hidden="true"></span><div class="hf-text"><b>Call booked</b></div></li>
+        <li class="hf-step s5"><span class="hf-mark" aria-hidden="true"></span><div class="hf-text"><b>Becomes a customer</b></div></li>
+        <li class="hf-step s6"><span class="hf-mark" aria-hidden="true"></span><div class="hf-text"><b>Reviews &amp; referrals</b></div></li>
+      </ol>
+      <div class="hf-note">// every lead, start to finish, in one system — and the loop starts again</div>
     </div>
   </div>
 </section>
@@ -560,15 +778,15 @@
 <section id="founder" class="founder">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Why AFI</div>
+      <div class="eyebrow">Why Always Forward</div>
       <h2>Over 25 years of enterprise systems, aimed at small business</h2>
     </div>
     <div class="founder-body">
       <div class="founder-badge"><img src="img/afi-founder-headshot.png" alt="Jay VanCampenhout, founder of Always Forward Intelligence"></div>
       <div class="founder-text">
         <p><strong>Jay VanCampenhout</strong> spent over 25 years as a solutions architect — designing the data and software systems that run underwriting, logistics, and manufacturing operations for national companies — the kind of infrastructure most small businesses never get access to.</p>
-        <p>AFI takes that same systems thinking and builds it for small businesses not just here in Northeast Wisconsin, but across the country: one connected platform instead of five disconnected tools, and AI that actually does something useful instead of just sounding impressive.</p>
-        <div class="founder-note">AFI is a new venture — you're getting direct access to the person doing the work, not a rotating account team.</div>
+        <p>Always Forward Intelligence takes that same systems thinking and builds it for small businesses, wherever they are: one connected platform instead of five disconnected tools, and intelligent systems that actually do something useful instead of just sounding impressive.</p>
+        <div class="founder-note">Always Forward Intelligence is a new venture — you're getting direct access to the person doing the work, not a rotating account team.</div>
       </div>
     </div>
   </div>
@@ -576,17 +794,19 @@
 
 <section class="final-cta" id="cta">
   <div class="wrap">
-    <h2>Start with the audit. See where the time is going.</h2>
-    <p>Twelve quick questions, a free scorecard, and an honest read on where AI could actually help — before you spend a dollar on anything else.</p>
-    <a href="scorecard.html" target="_blank" rel="noopener" class="btn-primary">Get my free efficiency scorecard →</a>
+    <h2>Two ways to get started.</h2>
+    <p>Need a website that brings in leads? Start with a package. Not sure where the time and money are going? Twelve quick questions get you a free scorecard and an honest read on where AI tools and processes could actually help.</p>
+    <div class="hero-ctas" style="justify-content:center; margin-top:0;">
+      <a href="offerings.html#websites" class="btn-primary">See website packages →</a>
+      <a href="scorecard.html" target="_blank" rel="noopener" class="btn-primary btn-teal">Get my free scorecard →</a>
+    </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <div class="logo">
-      <span class="logo-chip"><img src="img/afi-logo-mark.png" alt="AFI mark" class="logo-mark-img"></span>
-      <div class="logo-text" style="color:#fff;">AF<span>I</span></div>
+      <span class="logo-chip"><img src="img/afi-logo-mark.png" alt="Always Forward Intelligence mark" class="logo-mark-img"></span>
     </div>
     <div class="fine">&copy; 2026 ALWAYS FORWARD INTELLIGENCE</div>
   </div>

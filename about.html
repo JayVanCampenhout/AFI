@@ -408,7 +408,20 @@
     .hub-line, .hub-node{animation:none; opacity:1; stroke-dashoffset:0;}
   }
   :focus-visible{outline:2px solid var(--electric); outline-offset:3px;}
+
+  /* ---------- SECOND FILLED BUTTON ---------- */
+  .btn-primary.btn-teal{background:var(--teal);}
+  .btn-primary.btn-teal:hover{background:var(--teal-soft);}
+
+  /* ---------- PHONE FIXES ---------- */
+  @media (max-width:560px){
+    nav.wrap .logo{min-width:0; flex:1;}
+    nav.wrap .logo-full-img{height:auto; max-height:34px; max-width:100%;}
+    .offer-grid > .offer-card[style*="grid-template-columns"]{grid-template-columns:1fr !important; gap:18px !important; padding:30px 22px !important;}
+    .offer-grid > .offer-card > div[style*="border-left"]{border-left:none !important; padding-left:0 !important;}
+  }
 </style>
+</head>
 <body>
 
 <header>
@@ -422,6 +435,7 @@
       <a href="offerings.html">Offerings</a>
       <a href="how-it-works.html">How it works</a>
       <a href="about.html" style="color:var(--teal-soft); font-weight:700;">About</a>
+      <a href="contact.html">Contact</a>
     </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
@@ -429,7 +443,8 @@
     <a href="offerings.html">Offerings</a>
     <a href="how-it-works.html">How it works</a>
     <a href="about.html" style="color:var(--teal-soft); font-weight:700;">About</a>
-    <a href="scorecard.html" target="_blank" rel="noopener">Get my free scorecard</a>
+    <a href="contact.html">Contact</a>
+    <a href="offerings.html#websites">Website pricing</a>
   </div>
 </header>
 <script>
@@ -454,12 +469,12 @@
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">The Business</div>
-      <h2>AI systems, built for businesses that don't have a tech team</h2>
+      <h2>AI-assisted systems, built for businesses that don't have a tech team</h2>
     </div>
     <div style="max-width:760px;">
-      <p style="font-size:1.02rem; line-height:1.75; color:#3d4a5c; margin-bottom:18px;">Always Forward Intelligence (AFI) is an AI automation agency built for local small and mid-sized businesses. Built on the GoHighLevel platform, AFI gives SMB owners the kind of systems &mdash; AI-powered lead follow-up, virtual sales agents, ad creation, and marketing automation &mdash; that used to be reserved for companies with enterprise budgets and in-house tech teams.</p>
-      <p style="font-size:1.02rem; line-height:1.75; color:#3d4a5c; margin-bottom:18px;">AFI&rsquo;s approach starts with clarity, not guesswork. Every engagement begins with a business efficiency audit that maps exactly where automation will save the most time and generate the most revenue, before a single system gets built. From there, clients move into managed service tiers &mdash; from foundational GHL setup and AI ad creation to full-scale marketing systems &mdash; so owners can spend less time chasing leads and more time running their business.</p>
-      <p style="font-size:1.02rem; line-height:1.75; color:#3d4a5c; margin-bottom:0;">Rooted in Northeast Wisconsin, AFI works closely with the local business community it knows firsthand: apparel shops, service businesses, and other SMBs that don&rsquo;t have a marketing department but do have real growth potential. The agency&rsquo;s guiding line &mdash; <strong>Built on Experience. Powered by AI.</strong> &mdash; reflects its philosophy: proven, enterprise-grade practices, applied through AI, for the businesses that need them most.</p>
+      <p style="font-size:1.02rem; line-height:1.75; color:#3d4a5c; margin-bottom:18px;">Always Forward Intelligence is a web design and automation agency, enhanced with the assistance of AI, built for small and mid-sized businesses. Built around a central hub, we give owners the kind of systems &mdash; intelligent and consistent lead follow-up, virtual sales agents, ad creation, and marketing automation &mdash; that used to be reserved for companies with enterprise budgets and in-house tech teams.</p>
+      <p style="font-size:1.02rem; line-height:1.75; color:#3d4a5c; margin-bottom:18px;">Our approach starts with clarity, not guesswork. Every engagement begins with a business efficiency audit that maps exactly where automation will save the most time and generate the most revenue, before a single system gets built. From there, clients choose what fits &mdash; a website package, CRM and automation setup, AI ad creation, or full-scale marketing systems &mdash; so owners can spend less time chasing leads and more time running their business.</p>
+      <p style="font-size:1.02rem; line-height:1.75; color:#3d4a5c; margin-bottom:0;">Always Forward Intelligence works with small businesses wherever they are: apparel shops, service businesses, and other SMBs that don&rsquo;t have a marketing department but do have real growth potential. The agency&rsquo;s guiding line &mdash; <strong>Built on Experience. Powered by AI.</strong> &mdash; reflects its philosophy: proven, enterprise-grade practices, applied with AI&rsquo;s assistance and efficiency, for the businesses that need them most.</p>
     </div>
   </div>
 </section>
@@ -473,13 +488,24 @@
     <div class="founder-body">
       <div class="founder-badge"><img src="img/afi-founder-headshot.png" alt="Jay VanCampenhout, founder of Always Forward Intelligence"></div>
       <div class="founder-text" style="color:var(--mist);">
-        <p style="color:var(--mist);">Jay VanCampenhout founded Always Forward Intelligence (AFI) after over 25 years in enterprise software and solutions architecture. His background spans insurance underwriting systems, document imaging and compliance platforms, and building data warehouses from the ground up &mdash; plus a decade in fintech building auditing and automation solutions like cash forecasting, banking reconciliation, and cash route optimization. Add to that a logistics consolidation project where he used Power Automate to eliminate manual scheduling bottlenecks, and a consulting engagement where he trained a company&rsquo;s own leadership and development team to get full value out of a system they already owned. It&rsquo;s work that required the same thing every SMB owner needs today: turning complexity into systems that actually run.</p>
-        <p style="color:var(--mist);">Jay built his technical foundation in the Microsoft ecosystem &mdash; SQL Server, T-SQL, SSIS, SSRS, and VB/VB.NET &mdash; and spent over a decade leading development teams, translating enterprise-grade solutions into results that non-technical stakeholders could actually use and trust. He founded AFI to bring that same discipline to businesses that have never had access to it: local shops, service providers, and owner-operators who&rsquo;ve been making decisions on gut instinct because that&rsquo;s all they&rsquo;ve had time for.</p>
-        <p style="color:var(--mist);">Jay has lived in Northeast Wisconsin his whole life &mdash; he knows this region because he&rsquo;s never left it, though travel is high on the list once the timing is right. But that local footing isn&rsquo;t the whole story: more than a decade of &ldquo;side hustles&rdquo; has taught him just as much about community as 25 years in enterprise IT taught him about systems. He&rsquo;s had the honor of working alongside entrepreneurs from all across the country, currently as a Hugh &amp; Grace advocate, and that same networked understanding of people and momentum sits behind how AFI thinks about who it can serve.</p>
+        <p style="color:var(--mist);">Jay VanCampenhout founded Always Forward Intelligence after over 25 years in enterprise software and solutions architecture. His background spans insurance underwriting systems, document imaging and compliance platforms, and building data warehouses from the ground up &mdash; plus a decade in fintech building auditing and automation solutions like cash forecasting, banking reconciliation, and cash route optimization. Add to that a logistics consolidation project where he used Power Automate to eliminate manual scheduling bottlenecks, and a consulting engagement where he trained a company&rsquo;s own leadership and development team to get full value out of a system they already owned. It&rsquo;s work that required the same thing every SMB owner needs today: turning complexity into systems that actually run.</p>
+        <p style="color:var(--mist);">Jay built his technical foundation in the Microsoft ecosystem &mdash; SQL Server, T-SQL, SSIS, SSRS, and VB/VB.NET &mdash; and spent over a decade leading development teams, translating enterprise-grade solutions into results that non-technical stakeholders could actually use and trust. He founded Always Forward Intelligence to bring that same discipline to businesses that have never had access to it: local shops, service providers, and owner-operators who&rsquo;ve been making decisions on gut instinct because that&rsquo;s all they&rsquo;ve had time for.</p>
+        <p style="color:var(--mist);">Jay has lived in Northeast Wisconsin his whole life &mdash; he knows this region because he&rsquo;s never left it, though travel is high on the list once the timing is right. But that local footing isn&rsquo;t the whole story: more than a decade of &ldquo;side hustles&rdquo; has taught him just as much about community as 25 years in enterprise IT taught him about systems. He&rsquo;s had the honor of working alongside entrepreneurs from all across the country, currently as a Hugh &amp; Grace advocate, and that same networked understanding of people and momentum sits behind how the company thinks about who it can serve.</p>
         <p style="color:var(--mist);">It&rsquo;s the same instinct he&rsquo;s had since he started playing soccer at four years old, and carried into more than a dozen years coaching youth and high school soccer in the region &mdash; that a group of sharp individual skills only becomes something powerful once it works as a team. That&rsquo;s as true on the field as it is in a business trying to get five disconnected tools working like one system.</p>
-        <p style="color:var(--mist);">Jay operates by one guiding rule, borrowed from the name of his company: <strong>Always Forward.</strong> Find one small, manageable thing to move forward on each day, and progress compounds. It&rsquo;s the principle behind every system AFI builds &mdash; and the one Jay lives by, on and off the clock.</p>
+        <p style="color:var(--mist);">Jay operates by one guiding rule, borrowed from the name of his company: <strong>Always Forward.</strong> Find one small, manageable thing to move forward on each day, and progress compounds. It&rsquo;s the principle behind every system we build &mdash; and the one Jay lives by, on and off the clock.</p>
         <div class="founder-note" style="background:rgba(255,255,255,0.04); border-left:3px solid var(--teal-soft); color:#dfe7ee;">&ldquo;Always Forward. Find one small, manageable thing to move forward on each day, and progress compounds.&rdquo;</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="cta">
+  <div class="wrap">
+    <h2>Two ways to get started.</h2>
+    <p>Need a website that brings in leads? Start with a package. Not sure where the time and money are going? Start with the free scorecard.</p>
+    <div class="hero-ctas" style="justify-content:center; margin-top:0;">
+      <a href="offerings.html#websites" class="btn-primary">See website packages →</a>
+      <a href="scorecard.html" target="_blank" rel="noopener" class="btn-primary btn-teal">Get my free scorecard →</a>
     </div>
   </div>
 </section>
@@ -487,8 +513,7 @@
 <footer>
   <div class="wrap">
     <div class="logo">
-      <span class="logo-chip"><img src="img/afi-logo-mark.png" alt="AFI mark" class="logo-mark-img"></span>
-      <div class="logo-text" style="color:#fff;">AF<span>I</span></div>
+      <span class="logo-chip"><img src="img/afi-logo-mark.png" alt="Always Forward Intelligence mark" class="logo-mark-img"></span>
     </div>
     <div class="fine">&copy; 2026 ALWAYS FORWARD INTELLIGENCE</div>
   </div>

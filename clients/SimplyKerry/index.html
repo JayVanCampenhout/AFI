@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simply Kerry — Cleanup Concept</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #F2EEE2;
+    --ground-alt: #EBE5D2;
+    --ink: #1E2320;
+    --ink-soft: #3A362E;
+    --line: #CBC2A8;
+    --muted: #6B6248;
+    --pine: #2F4A3E;
+    --pine-dark: #223A2F;
+    --gold: #B8860B;
+    --gold-dark: #8A6A1E;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Work Sans', system-ui, sans-serif; background: var(--ground); color: var(--ink); }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .eyebrow { font-family: 'IBM Plex Mono', 'Courier New', monospace; text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px; }
+  .note { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.04em; }
+  .wrap { max-width: 1312px; margin: 0 auto; padding: 0 32px; }
+  .banner { background: var(--gold); color: var(--ink); text-align: center; padding: 8px 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.05em; }
+  nav.site-nav { position: sticky; top: 0; z-index: 20; background: rgba(242,238,226,0.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(6px); }
+  nav.site-nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 84px; gap: 24px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand img { height: 44px; width: 44px; object-fit: cover; border-radius: 50%; }
+  .brand-name { display: flex; flex-direction: column; line-height: 1.1; }
+  .brand-name span:first-child { font-family: 'Fraunces', Georgia, serif; font-size: 20px; font-weight: 600; }
+  .nav-links { display: flex; align-items: center; gap: 36px; font-size: 14px; font-weight: 500; flex-wrap: wrap; }
+  .nav-links a:hover { opacity: 0.6; }
+  .divider-v { width: 1px; height: 20px; background: var(--line); }
+  .btn { display: inline-block; padding: 10px 22px; background: var(--pine); color: var(--ground); border-radius: 3px; font-weight: 600; }
+  .btn:hover { background: var(--pine-dark); }
+  .btn-lg { padding: 14px 26px; font-size: 15px; }
+  .btn-gold { background: var(--gold); color: var(--ink); }
+  .btn-ghost { border: 1px solid var(--ink); background: transparent; }
+  .btn-ghost:hover { background: rgba(30,35,32,0.06); }
+  section { border-bottom: 1px solid var(--line); }
+  section.alt { background: var(--ground-alt); }
+  .hero .wrap { display: flex; gap: 56px; align-items: center; padding-top: 72px; padding-bottom: 72px; flex-wrap: wrap; }
+  .hero-copy { flex: 1 1 460px; display: flex; flex-direction: column; gap: 22px; }
+  .hero-copy h1 { margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 64px; line-height: 1.04; letter-spacing: -0.01em; }
+  .hero-copy p { margin: 0; font-size: 17px; line-height: 1.65; color: var(--ink-soft); max-width: 500px; }
+  .hero-copy .standfirst { font-size: 15px; color: var(--muted); font-style: italic; }
+  .hero-actions { display: flex; gap: 14px; padding-top: 6px; flex-wrap: wrap; }
+  .hero-photo { flex: 1 1 420px; position: relative; border-radius: 4px; overflow: hidden; min-height: 360px; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-photo .note-badge { position: absolute; bottom: 12px; right: 12px; background: rgba(30,35,32,0.7); color: var(--ground); padding: 4px 8px; border-radius: 2px; }
+  .welcome .wrap { display: flex; gap: 64px; padding: 96px 32px; flex-wrap: wrap; }
+  .welcome-head { flex: 0 0 320px; }
+  .welcome-head h2 { margin: 14px 0 0; font-family: 'Fraunces', Georgia, serif; font-size: 34px; }
+  .welcome-body { flex: 1 1 480px; display: flex; flex-direction: column; gap: 18px; font-size: 16px; line-height: 1.7; color: var(--ink-soft); max-width: 620px; }
+  .welcome-body p { margin: 0; }
+  .work-with-me .wrap { padding: 96px 32px; display: flex; flex-direction: column; gap: 32px; }
+  .img-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+  .img-row img { border-radius: 4px; width: 100%; }
+  .duo .wrap { padding: 100px 32px; display: flex; flex-direction: column; gap: 48px; }
+  .duo-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap; }
+  .duo-head h2 { margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 40px; max-width: 620px; }
+  .duo-head .note { color: var(--muted); max-width: 260px; text-align: right; }
+  .duo-body { display: flex; gap: 40px; flex-wrap: wrap; }
+  .duo-body img { width: 340px; height: 420px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
+  .duo-text { display: flex; flex-direction: column; gap: 22px; justify-content: center; flex: 1 1 400px; }
+  .duo-text p { margin: 0; font-size: 15px; line-height: 1.7; color: var(--ink-soft); max-width: 560px; }
+  .duo-text .pull { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 22px; line-height: 1.5; color: var(--pine); }
+  .tv .wrap, .dearkerry .wrap, .community .wrap { padding: 90px 32px; display: flex; gap: 56px; align-items: center; flex-wrap: wrap; }
+  .tv-copy, .dearkerry-copy, .community-copy { flex: 1 1 400px; display: flex; flex-direction: column; gap: 16px; }
+  .tv-copy h3, .dearkerry-copy h3, .community-copy h3 { margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 32px; }
+  .tv-copy p, .dearkerry-copy p, .community-copy p { margin: 0; font-size: 15px; line-height: 1.65; color: var(--ink-soft); max-width: 460px; }
+  .tv-form, .community-links { display: flex; gap: 10px; padding-top: 8px; flex-wrap: wrap; }
+  input, textarea { font-family: 'Work Sans', sans-serif; font-size: 14px; border: 1px solid var(--ink); border-radius: 3px; padding: 13px 16px; background: #FBF9F1; }
+  .tv .wrap img, .dearkerry .wrap img, .community .wrap img { width: 340px; flex-shrink: 0; border-radius: 4px; }
+  .dearkerry-form { display: flex; flex-direction: column; gap: 10px; max-width: 420px; padding-top: 8px; }
+  .dearkerry-form textarea { height: 70px; resize: none; }
+  .results .wrap { padding: 90px 32px; display: flex; flex-direction: column; gap: 32px; }
+  .results-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; }
+  .results-head h3 { margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 32px; }
+  .results-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+  .play-card { aspect-ratio: 3 / 4; border-radius: 4px; background: #DCD5BF; display: flex; align-items: center; justify-content: center; }
+  .play-triangle { width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid var(--muted); }
+  footer.contact { background: var(--ink); color: var(--ground); }
+  footer.contact .wrap { padding: 90px 32px 56px; display: flex; flex-direction: column; gap: 56px; }
+  .contact-top { display: flex; justify-content: space-between; gap: 56px; flex-wrap: wrap; }
+  .contact-copy { max-width: 460px; display: flex; flex-direction: column; gap: 14px; }
+  .contact-copy h3 { margin: 0; font-family: 'Fraunces', Georgia, serif; font-size: 34px; }
+  .contact-copy p { margin: 0; font-size: 14px; line-height: 1.65; color: #C7C2AF; }
+  .contact-form { width: 100%; max-width: 360px; display: flex; flex-direction: column; gap: 12px; }
+  .contact-form input, .contact-form textarea { background: transparent; border: 1px solid #4A4636; color: var(--ground); }
+  .contact-form textarea { height: 70px; resize: none; }
+  .contact-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; border-top: 1px solid #3A3830; flex-wrap: wrap; gap: 16px; }
+  .socials { display: flex; gap: 26px; font-size: 13px; color: #C7C2AF; flex-wrap: wrap; }
+  .copyright { font-size: 13px; color: #8A8368; }
+  @media (max-width: 720px) {
+    .hero-copy h1 { font-size: 42px; }
+    .img-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .results-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .duo-body img, .tv .wrap img, .dearkerry .wrap img, .community .wrap img { width: 100%; height: auto; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="banner">WORKING DRAFT — IMAGES LOAD FROM /img/ NEXT TO THIS FILE — DROP IN THE 10 FILES FROM THE ORIGINAL SITE</div>
+
+  <nav class="site-nav">
+    <div class="wrap">
+      <div class="brand">
+        <img src="img/unnamed.jpg" alt="Simply Kerry">
+        <div class="brand-name">
+          <span>Simply Kerry</span>
+          <span class="eyebrow" style="color: var(--muted); font-size: 10px;">Kerry Geocaris &amp; Brad Bordini</span>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#welcome">About</a>
+        <a href="#duo">Kerry &amp; Brad</a>
+        <a href="blog.html">Blog</a>
+        <a href="speaking.html">Speaking</a>
+        <a href="courses.html">Signature Course</a>
+        <div class="divider-v"></div>
+        <a href="#contact" class="btn">Get In Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow" style="color: var(--gold-dark);">Life, Business &amp; Brain-Performance Coaching</div>
+        <h1>Elevate To Excellence.</h1>
+        <p>I teach through transparency and provide a process that breaks down the brain and busts through the barriers to help you reach your optimal potential.</p>
+        <p class="standfirst">I had a message that spread and people wanted more. So I created a method that brought results. We now have a movement that is elevating lives around the globe.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-lg">Work With Me</a>
+          <a href="#tv" class="btn btn-lg btn-ghost">Catch Coaching With Kerry →</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="img/Kerrybrad.jpg" alt="Kerry Geocaris and Brad Bordini">
+        <div class="note-badge note">existing site photo</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="welcome" id="welcome">
+    <div class="wrap">
+      <div class="welcome-head">
+        <div class="eyebrow" style="color: var(--muted);">Welcome to Simply Kerry</div>
+        <h2>I am far from simple. My process is.</h2>
+      </div>
+      <div class="welcome-body">
+        <p>I care about one thing — results — and I like to blow them out of the park. I do this by teaching you about your brain, through my method called the <strong>Simply Kerry Process.</strong></p>
+        <p>This method blends science and spirit to rewire and rebuild the mind, so you can reconnect with your unique power and perform at your best in all areas of life. I'm a life, business, and brain-performance coach, TV personality, speaker, and master motivator and marketer.</p>
+        <p>I teach through transparency, lead with love, and walk the walk. I don't guide, I lead — on a mission to take people and businesses places they didn't know were possible.</p>
+        <a href="process.html" style="font-size: 14px; font-weight: 600;">See the full Simply Kerry Process →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="work-with-me alt">
+    <div class="wrap">
+      <div class="eyebrow" style="color: var(--gold-dark);">Work With Me</div>
+      <div class="img-row">
+        <img src="img/41435079_319192915296406_2993169305652166656_n.png" alt="">
+        <img src="img/41210533_300316133888820_880727557085855744_n.png" alt="">
+        <img src="img/41513638_1357435721060666_4850479826353520640_n-1.png" alt="">
+        <img src="img/GET-THE-LATEST.png" alt="">
+      </div>
+    </div>
+  </section>
+
+  <section class="duo" id="duo">
+    <div class="wrap">
+      <div class="duo-head">
+        <h2>A couple with a calling to elevate the world.</h2>
+        <div class="note">copy pulled directly from the existing "Kerry &amp; Brad" page</div>
+      </div>
+      <div class="duo-body">
+        <img src="img/3.jpg" alt="Kerry Geocaris and Brad Bordini">
+        <div class="duo-text">
+          <p class="pull">"When you blend my energetic leadership and motivational skills with Brad's clinical expertise and experience, you get a dynamic duo you won't find anywhere else."</p>
+          <p>My clients were getting such incredible results that my husband, Brad Bordini, a licensed psychotherapist, decided he wanted to experience the same. After taking the course, he joined Simply Kerry and now teaches with me as well, and uses the tools in his own practice.</p>
+          <p>"Simply Kerry" and "Being Bradford" were created because we discovered joy when we learned to simply <em>be</em> ourselves. Together, we found a yin-yang balance — combining scientific expertise with spiritually-based insight, Brad's reserved, analytical mind-set with Kerry's energetic embrace of risk and child-like joy.</p>
+          <div style="display: flex; gap: 24px; padding-top: 4px;">
+            <a href="kerry.html" style="font-size: 14px; font-weight: 600;">Kerry's full story →</a>
+            <a href="brad.html" style="font-size: 14px; font-weight: 600;">Brad's full story →</a>
+            <a href="kerry-and-brad.html" style="font-size: 14px; font-weight: 600;">Their story together →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tv alt" id="tv">
+    <div class="wrap">
+      <div class="tv-copy">
+        <div class="eyebrow" style="color: var(--gold-dark);">Free Weekly Coaching</div>
+        <h3>Coaching With Kerry — live on WFRV.</h3>
+        <p>Every week, a free coaching-tip TV segment. Catch it live, or subscribe to get the latest tips and tools in your inbox — a short video and activity sheet to help you implement weekly.</p>
+        <form class="tv-form" onsubmit="return false;">
+          <input type="text" placeholder="First Name" style="width: 140px;">
+          <input type="email" placeholder="Email" style="width: 200px;">
+          <button type="submit" class="btn btn-gold" style="border: none; font-size: 14px; font-weight: 700; cursor: pointer;">Yes Please!</button>
+        </form>
+      </div>
+      <img src="img/As-Seen-On-2.png" alt="As seen on WFRV">
+    </div>
+  </section>
+
+  <section class="dearkerry" id="dearkerry">
+    <div class="wrap">
+      <img src="img/46492089_268638833847420_427454081808728064_n.png" alt="Dear Kerry">
+      <div class="dearkerry-copy">
+        <div class="eyebrow" style="color: var(--pine);">The Dear Kerry Series</div>
+        <h3>Need some guidance? Submit your question and receive feedback from Kerry.</h3>
+        <form class="dearkerry-form" onsubmit="return false;">
+          <input type="text" placeholder="Name">
+          <input type="email" placeholder="Email Address">
+          <textarea placeholder="Your Question for Kerry"></textarea>
+          <button type="submit" class="btn" style="border: none; font-size: 14px; font-weight: 700; cursor: pointer; align-self: flex-start; padding-left: 40px; padding-right: 40px;">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="results alt">
+    <div class="wrap">
+      <div class="results-head">
+        <h3>Real Results.</h3>
+        <div class="note" style="color: var(--muted);">the site's 5 existing client-story videos would slot in here</div>
+      </div>
+      <div class="results-grid">
+        <div class="play-card"><div class="play-triangle"></div></div>
+        <div class="play-card"><div class="play-triangle"></div></div>
+        <div class="play-card"><div class="play-triangle"></div></div>
+        <div class="play-card"><div class="play-triangle"></div></div>
+        <div class="play-card"><div class="play-triangle"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="community">
+    <div class="wrap">
+      <img src="img/Join-My-Tribe-Image.png" alt="Join the Simply Kerry Tribe">
+      <div class="community-copy">
+        <div class="eyebrow" style="color: var(--gold-dark);">Community</div>
+        <h3>One of my highest values is meaningful relationships.</h3>
+        <p>I believe in surrounding yourself with people who will motivate you, support you, and bring out your best. You'll find all that and much more in the Simply Kerry Tribe — it's magical.</p>
+        <div class="community-links">
+          <a href="https://www.facebook.com/groups/1216572725102717/" class="btn btn-ghost" style="font-size: 14px;">Simply Kerry Community</a>
+          <a href="https://www.facebook.com/groups/541233866308303/" class="btn btn-ghost" style="font-size: 14px;">The Elevation Tribe</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-top">
+        <div class="contact-copy">
+          <h3>Get In Touch.</h3>
+          <p>Same contact form as the current site — name, email, message — just cleaned up and easier to find.</p>
+        </div>
+        <form class="contact-form" onsubmit="return false;">
+          <input type="text" placeholder="Name">
+          <input type="email" placeholder="Email Address">
+          <textarea placeholder="Message"></textarea>
+          <button type="submit" class="btn btn-gold" style="border: none; font-size: 14px; font-weight: 700; cursor: pointer;">Submit</button>
+        </form>
+      </div>
+      <div class="contact-bottom">
+        <span style="font-family: 'Fraunces', Georgia, serif; font-size: 18px;">Simply Kerry</span>
+        <div class="socials">
+          <a href="https://www.facebook.com/SimplyKerryLLC/">Facebook</a>
+          <a href="https://www.instagram.com/kerrygeocaris/">Instagram</a>
+          <a href="https://www.linkedin.com/in/simplykerry/">LinkedIn</a>
+          <a href="https://twitter.com/kerrygeo">Twitter</a>
+        </div>
+        <div class="copyright">© 2026 Simply Kerry</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

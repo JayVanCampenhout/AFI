@@ -402,7 +402,16 @@
     .hub-line, .hub-node{animation:none; opacity:1; stroke-dashoffset:0;}
   }
   :focus-visible{outline:2px solid var(--electric); outline-offset:3px;}
+
+  /* ---------- PHONE FIXES ---------- */
+  @media (max-width:560px){
+    nav.wrap .logo{min-width:0; flex:1;}
+    nav.wrap .logo-full-img{height:auto; max-height:34px; max-width:100%;}
+    .offer-grid > .offer-card[style*="grid-template-columns"]{grid-template-columns:1fr !important; gap:18px !important; padding:30px 22px !important;}
+    .offer-grid > .offer-card > div[style*="border-left"]{border-left:none !important; padding-left:0 !important;}
+  }
 </style>
+</head>
 <body>
 
 <header>
@@ -416,6 +425,7 @@
       <a href="offerings.html">Offerings</a>
       <a href="how-it-works.html">How it works</a>
       <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
@@ -423,6 +433,7 @@
     <a href="offerings.html">Offerings</a>
     <a href="how-it-works.html">How it works</a>
     <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </div>
 </header>
 <script>
@@ -730,15 +741,15 @@
         <div class="afi-rec-eyebrow">Recommended starting point</div>
         <div class="afi-rec-title" id="afiRecTitle">Package</div>
         <div class="afi-rec-body" id="afiRecBody">Description</div>
-        <button class="afi-btn afi-btn-primary" style="background:var(--teal-light)" id="afiCta">Book Your Free AI Audit Call</button>
+        <button class="afi-btn afi-btn-primary" style="background:var(--teal-light)" id="afiCta">Book Your Free Business Efficiency Review Call</button>
 
         <div class="afi-upsell">
           <div class="afi-upsell-top">
             <span class="afi-upsell-title">Not ready to talk yet?</span>
-            <span class="afi-upsell-price">$16</span>
+            <span class="afi-upsell-price">$88</span>
           </div>
           <div class="afi-upsell-body">Get the Detailed Business Efficiency Audit — a 30-question, self-guided workbook covering all six areas that determine how much time and money you're losing. Dig deeper on your own time.</div>
-          <button class="afi-btn afi-btn-upsell" id="afiUpsell">Get the Detailed Audit — $16</button>
+          <button class="afi-btn afi-btn-upsell" id="afiUpsell">Get the Detailed Audit — $88</button>
         </div>
 
         <div class="afi-nextstep">
@@ -960,12 +971,12 @@
 
   $('afiCta').addEventListener('click', function(){
     // TODO: replace with GHL booking link once connected — for now, route to the lead form below
-    revealLeadForm('Free AI Audit Call');
+    revealLeadForm('Free Business Efficiency Review Call');
   });
 
   $('afiUpsell').addEventListener('click', function(){
-    // TODO: replace with Stripe Payment Link for the $16 Detailed Business Efficiency Audit once connected
-    revealLeadForm('$16 Detailed Business Efficiency Audit');
+    // TODO: replace with Stripe Payment Link for the $88 Detailed Business Efficiency Audit once connected
+    revealLeadForm('$88 Detailed Business Efficiency Audit');
   });
 
   $('afiToggleForm').addEventListener('click', function(){
@@ -995,7 +1006,7 @@
     const catLines = (r.cats || []).map(c => c.cat + ': ' + c.pct + '%').join('\n');
 
     $('afiSendInfo').disabled = true;
-    $('afiFormMsg').textContent = 'Sending to our team…';
+    $('afiFormMsg').textContent = 'Sending…';
 
     fetch(FORMSPREE_URL, {
       method: 'POST',
@@ -1030,8 +1041,7 @@
 <footer>
   <div class="wrap">
     <div class="logo">
-      <span class="logo-chip"><img src="img/afi-logo-mark.png" alt="AFI mark" class="logo-mark-img"></span>
-      <div class="logo-text" style="color:#fff;">AF<span>I</span></div>
+      <span class="logo-chip"><img src="img/afi-logo-mark.png" alt="Always Forward Intelligence mark" class="logo-mark-img"></span>
     </div>
     <div class="fine">&copy; 2026 ALWAYS FORWARD INTELLIGENCE</div>
   </div>
