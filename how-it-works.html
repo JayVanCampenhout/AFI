@@ -402,7 +402,121 @@
     .hub-line, .hub-node{animation:none; opacity:1; stroke-dashoffset:0;}
   }
   :focus-visible{outline:2px solid var(--electric); outline-offset:3px;}
+
+  /* ---------- SECOND FILLED BUTTON ---------- */
+  .btn-primary.btn-teal{background:var(--teal);}
+  .btn-primary.btn-teal:hover{background:var(--teal-soft);}
+
+  /* ---------- LEAD FLOW (horizontal loop) ---------- */
+  .hflow{position:relative; padding-top:40px;
+    --fv-idle:rgba(255,255,255,0.24); --fv-line:rgba(255,255,255,0.16); --fv-markbg:var(--navy-deep);
+    --fv-text:#c9d6e3; --fv-text-lit:#fff; --fv-sub:#8fa1b6; --fv-dot:#7FE3E1;}
+  section:not(.system) .hflow{--fv-idle:#c9d3df; --fv-line:#d5dde7; --fv-markbg:var(--paper);
+    --fv-text:#3d4a5c; --fv-text-lit:var(--navy-deep); --fv-sub:#5b6b7f; --fv-dot:var(--teal);}
+  .hf-track{position:absolute; top:52px; left:8.333%; right:8.333%; height:2px; background:var(--fv-line);}
+  .hf-return{position:absolute; top:20px; left:8.333%; right:8.333%; height:33px;
+    border:1.5px dashed var(--fv-line); border-bottom:none; border-radius:16px 16px 0 0;}
+  .hf-dot{position:absolute; top:53px; left:8.333%; width:12px; height:12px; margin:-6px 0 0 -6px; border-radius:50%; z-index:3;
+    background:var(--fv-dot); box-shadow:0 0 0 5px rgba(18,163,161,0.22), 0 0 14px rgba(18,163,161,0.45);
+    animation:hfDot 14s ease-in-out infinite;}
+  @keyframes hfDot{
+    0%{left:8.333%; top:53px;}
+    5%{left:8.333%;}
+    11%{left:25.000%;} 16%{left:25.000%;}
+    22%{left:41.667%;} 27%{left:41.667%;}
+    33%{left:58.333%;} 38%{left:58.333%;}
+    44%{left:75.000%;} 49%{left:75.000%;}
+    55%{left:91.667%; top:53px;} 62%{left:91.667%; top:53px;}
+    65%{left:91.667%; top:21px;}
+    80%{left:8.333%; top:21px;}
+    83%{left:8.333%; top:53px;}
+    100%{left:8.333%; top:53px;}
+  }
+  .hf-steps{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(6,1fr);}
+  .hf-step{display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 10px;}
+  .hf-mark{width:26px; height:26px; border-radius:50%; background:var(--fv-markbg); border:2px solid var(--fv-idle);
+    position:relative; z-index:2; margin-bottom:18px; animation:hfMark 14s ease-in-out infinite;}
+  .hf-text b{display:block; font-family:'Inter',sans-serif; font-weight:600; font-size:0.98rem; line-height:1.3; color:var(--fv-text);
+    margin-bottom:8px; animation:hfText 14s ease-in-out infinite;}
+  .hf-text span{display:block; font-size:0.86rem; line-height:1.55; color:var(--fv-sub);}
+  .hf-step.s2 .hf-mark, .hf-step.s2 .hf-text b{animation-delay:1.26s;}
+  .hf-step.s3 .hf-mark, .hf-step.s3 .hf-text b{animation-delay:2.8s;}
+  .hf-step.s4 .hf-mark, .hf-step.s4 .hf-text b{animation-delay:4.34s;}
+  .hf-step.s5 .hf-mark, .hf-step.s5 .hf-text b{animation-delay:5.88s;}
+  .hf-step.s6 .hf-mark, .hf-step.s6 .hf-text b{animation-delay:7.42s;}
+  .hf-step.s1 .hf-mark{animation-name:hfMark1;}
+  .hf-step.s1 .hf-text b{animation-name:hfText1;}
+  @keyframes hfMark{
+    0%{border-color:var(--fv-idle); box-shadow:none;}
+    2%,9%{border-color:var(--teal-soft); box-shadow:0 0 0 6px rgba(18,163,161,0.18);}
+    16%,100%{border-color:var(--fv-idle); box-shadow:none;}
+  }
+  @keyframes hfText{ 0%{color:var(--fv-text);} 2%,9%{color:var(--fv-text-lit);} 16%,100%{color:var(--fv-text);} }
+  @keyframes hfMark1{
+    0%,6%{border-color:var(--teal-soft); box-shadow:0 0 0 6px rgba(18,163,161,0.18);}
+    12%,80%{border-color:var(--fv-idle); box-shadow:none;}
+    85%,100%{border-color:var(--teal-soft); box-shadow:0 0 0 6px rgba(18,163,161,0.18);}
+  }
+  @keyframes hfText1{ 0%,6%{color:var(--fv-text-lit);} 12%,80%{color:var(--fv-text);} 85%,100%{color:var(--fv-text-lit);} }
+  .hf-note{margin-top:34px; text-align:center; font-size:0.95rem; color:var(--fv-sub);}
+  .hf-note strong{color:var(--fv-text-lit);}
+  .hflow.compact .hf-text b{font-size:0.9rem; margin-bottom:0;}
+  .hflow.compact .hf-note{font-family:'JetBrains Mono',monospace; font-size:0.78rem;}
+  /* phones and narrow screens: vertical list, steps still light in order */
+  @media (max-width:900px){
+    .hflow{padding-top:0;}
+    .hf-track, .hf-return, .hf-dot{display:none;}
+    .hf-steps{grid-template-columns:1fr; position:relative;}
+    .hf-steps::before{content:""; position:absolute; left:12px; top:13px; bottom:13px; width:2px; background:var(--fv-line);}
+    .hf-step{flex-direction:row; align-items:flex-start; text-align:left; gap:16px; padding:0 0 22px 0;}
+    .hf-mark{flex:0 0 26px; margin-bottom:0;}
+    .hf-text b{margin-bottom:4px;}
+    .hflow.compact .hf-step{align-items:center; padding-bottom:16px;}
+    .hf-note{text-align:left; margin-top:8px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hf-dot{display:none;}
+    .hf-mark, .hf-text b{animation:none !important;}
+  }
+
+  /* ---------- LEAD SOURCES (How It Works) ---------- */
+  .hflow-sources-wrap{position:relative; display:grid; grid-template-columns:150px 1fr; align-items:start;}
+  .hf-sources{position:relative; height:126px;}
+  .hf-sources svg{position:absolute; left:0; top:0; overflow:visible;}
+  .hf-sources path{fill:none; stroke:var(--fv-line,#d5dde7); stroke-width:1.5;}
+  .hf-src{position:absolute; left:0; width:86px; height:26px; line-height:24px; text-align:center; border-radius:13px;
+    font-family:'JetBrains Mono',monospace; font-size:0.66rem; letter-spacing:0.04em; text-transform:uppercase;
+    color:#5b6b7f; background:#fff; border:1px solid #d5dde7; transition:border-color .25s, color .25s, box-shadow .25s;}
+  .hf-src.send{border-color:var(--teal); color:var(--teal); box-shadow:0 0 0 4px rgba(14,124,123,0.12);}
+  .hf-inbound{position:absolute; top:52px; left:0; width:8.333%; height:2px; background:#d5dde7;}
+  .hf-src-dot{position:absolute; width:10px; height:10px; margin:-5px 0 0 -5px; border-radius:50%; z-index:4; pointer-events:none;
+    background:var(--teal); box-shadow:0 0 0 4px rgba(14,124,123,0.16);}
+  .hf-step.s1 .hf-mark::after{content:""; position:absolute; inset:-2px; border-radius:50%; border:2px solid var(--teal); opacity:0;}
+  .hf-step.s1 .hf-mark.ping::after{animation:hfPing .7s ease-out;}
+  @keyframes hfPing{ 0%{opacity:.9; transform:scale(1);} 100%{opacity:0; transform:scale(1.9);} }
+  .with-sources .hf-dot{display:none;}
+  .with-sources .hf-return{left:-64px; border-left:none; border-radius:0 16px 0 0;}
+  .with-sources .hf-mark, .with-sources .hf-text b{animation:none !important; transition:border-color .25s, box-shadow .25s, color .25s;}
+  .with-sources .hf-step.lit .hf-mark{border-color:var(--teal-soft); box-shadow:0 0 0 6px rgba(18,163,161,0.18);}
+  .with-sources .hf-step.lit .hf-text b{color:var(--fv-text-lit);}
+  .with-sources .hf-step .hf-mark::after{content:""; position:absolute; inset:-2px; border-radius:50%; border:2px solid var(--teal); opacity:0;}
+  .with-sources .hf-step .hf-mark.ping::after{animation:hfPing .7s ease-out;}
+  @media (max-width:900px){
+    .hflow-sources-wrap{display:block;}
+    .hf-sources{height:auto; display:flex; flex-wrap:wrap; gap:8px; margin:0 0 18px 0; padding-left:0;}
+    .hf-sources svg, .hf-inbound{display:none;}
+    .hf-src{position:static;}
+  }
+
+  /* ---------- PHONE FIXES ---------- */
+  @media (max-width:560px){
+    nav.wrap .logo{min-width:0; flex:1;}
+    nav.wrap .logo-full-img{height:auto; max-height:34px; max-width:100%;}
+    .offer-grid > .offer-card[style*="grid-template-columns"]{grid-template-columns:1fr !important; gap:18px !important; padding:30px 22px !important;}
+    .offer-grid > .offer-card > div[style*="border-left"]{border-left:none !important; padding-left:0 !important;}
+  }
 </style>
+</head>
 <body>
 
 <header>
@@ -416,6 +530,7 @@
       <a href="offerings.html">Offerings</a>
       <a href="how-it-works.html" style="color:var(--teal-soft); font-weight:700;">How it works</a>
       <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
@@ -423,7 +538,8 @@
     <a href="offerings.html">Offerings</a>
     <a href="how-it-works.html" style="color:var(--teal-soft); font-weight:700;">How it works</a>
     <a href="about.html">About</a>
-    <a href="scorecard.html" target="_blank" rel="noopener">Get my free scorecard</a>
+    <a href="contact.html">Contact</a>
+    <a href="offerings.html#websites">Website pricing</a>
   </div>
 </header>
 <script>
@@ -446,10 +562,10 @@
   <div class="wrap">
     <div class="eyebrow" style="color:var(--teal-soft); margin-bottom:20px;">The system behind it</div>
     <h1 style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:clamp(2.2rem,4vw,3.2rem); line-height:1.1; max-width:760px; color:#fff;">One hub. <em style="font-style:normal; background:linear-gradient(90deg, var(--teal-soft), var(--electric)); -webkit-background-clip:text; background-clip:text; color:transparent;">Every piece connected.</em></h1>
-    <p style="margin-top:22px; font-size:1.08rem; line-height:1.65; color:var(--mist); max-width:640px;">Most small businesses end up with a pile of disconnected tools — a website that doesn't talk to their CRM, ads that don't follow up, a phone that goes to voicemail. AFI runs everything through one platform, the way a solutions architect would build it.</p>
+    <p style="margin-top:22px; font-size:1.08rem; line-height:1.65; color:var(--mist); max-width:640px;">Most small businesses end up with a pile of disconnected tools — a website that doesn't talk to their CRM, ads that don't follow up, a phone that goes to voicemail. We connect everything into one system, the way a solutions architect would build it.</p>
     <div class="hero-ctas" style="margin-top:32px;">
-      <a href="scorecard.html" target="_blank" rel="noopener" class="btn-primary">Get my free efficiency scorecard →</a>
-      <a href="offerings.html" class="btn-ghost">See the offerings →</a>
+      <a href="offerings.html#websites" class="btn-primary">See website packages →</a>
+      <a href="scorecard.html" target="_blank" rel="noopener" class="btn-primary btn-teal">Get my free scorecard →</a>
     </div>
   </div>
 </section>
@@ -468,8 +584,8 @@
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">The hub</div>
-      <h2>Why GoHighLevel is the core of every build</h2>
-      <p>GoHighLevel (GHL) is the platform AFI builds every system on top of — one login, one dashboard, one place where leads, follow-up, and reporting all live. It's not the only tool in the stack, but it's the one everything else plugs into. In practice, GHL alone directly resolves roughly 60% of the items that show up on a typical Detailed Business Efficiency Audit — the rest gets addressed with the website, AI clone, and ad work layered on top.</p>
+      <h2>Why one connected hub sits at the core of every build</h2>
+      <p>Every build connects to one hub — one login, one dashboard, one place where leads, follow-up, and reporting all live. Our go-to platform is GoHighLevel, because it covers more of a small business's needs in one place than anything else we've found: it addresses 18 of the 30 areas our Detailed Business Efficiency Audit looks at. It isn't a requirement, though. If you already have tools that work, we connect to those instead. The point is one system, not a particular brand of software.</p>
     </div>
   </div>
 </section>
@@ -480,34 +596,113 @@
       <div class="eyebrow">The flow</div>
       <h2>What happens after a lead shows up</h2>
     </div>
-    <div class="system-body">
-      <ul class="system-list">
-        <li>
-          <span class="system-num">01</span>
-          <div><h4>A lead comes in</h4><p>From your website, an ad, or a walk-in you enter manually — it lands in one place, not three.</p></div>
-        </li>
-        <li>
-          <span class="system-num">02</span>
-          <div><h4>Your AI clone responds</h4><p>Answers the first questions, qualifies the lead, and books the call — before you've even seen the notification.</p></div>
-        </li>
-        <li>
-          <span class="system-num">03</span>
-          <div><h4>Follow-up happens on its own</h4><p>No more leads going cold because nobody had time to call back on a Friday afternoon.</p></div>
-        </li>
-        <li>
-          <span class="system-num">04</span>
-          <div><h4>You see what's working</h4><p>One dashboard, not five logins — so you can see which ad, which page, and which follow-up is actually driving business.</p></div>
-        </li>
-      </ul>
-      <div class="system-visual">
-        <div>WEBSITE</div>
-        <div><span class="arrow">↘</span></div>
-        <div>AD <span class="arrow">↘</span> <span class="flow">GHL HUB</span> <span class="arrow">↙</span> AUDIT</div>
-        <div><span class="arrow">↗</span></div>
-        <div>AI CLONE</div>
-        <div style="margin-top:14px; color:#7d8fa6;">// one platform, four entry points,<br>// zero disconnected tools</div>
+    <div class="hflow-sources-wrap" id="hfWrap">
+      <div class="hf-sources" aria-hidden="true">
+        <svg width="150" height="126" viewBox="0 0 150 126">
+          <path d="M86,20 C116,20 120,53 150,53" />
+          <path d="M86,50 C116,50 120,53 150,53" />
+          <path d="M86,80 C116,80 120,53 150,53" />
+          <path d="M86,110 C116,110 120,53 150,53" />
+        </svg>
+        <span class="hf-src" data-y="20" data-name="Referral" style="top:7px">Referral</span>
+        <span class="hf-src" data-y="50" data-name="Website" style="top:37px">Website</span>
+        <span class="hf-src" data-y="80" data-name="Ad" style="top:67px">Ad</span>
+        <span class="hf-src" data-y="110" data-name="Walk-in" style="top:97px">Walk-in</span>
       </div>
+    <div class="hflow with-sources">
+      <div class="hf-inbound" aria-hidden="true"></div>
+      <div class="hf-track" aria-hidden="true"></div>
+      <div class="hf-return" aria-hidden="true"></div>
+      <span class="hf-dot" aria-hidden="true"></span>
+      <ol class="hf-steps">
+        <li class="hf-step s1"><span class="hf-mark" aria-hidden="true"></span><div class="hf-text"><b>A lead comes in</b><span>From your website, an ad, or a walk-in you enter manually. It lands in one place, not three.</span></div></li>
+        <li class="hf-step s2"><span class="hf-mark" aria-hidden="true"></span><div class="hf-text"><b>They hear back right away</b><span>Your digital clone or an automatic text answers the first questions within seconds, even after hours.</span></div></li>
+        <li class="hf-step s3"><span class="hf-mark" aria-hidden="true"></span><div class="hf-text"><b>Follow-up happens on its own</b><span>Reminders and check-ins go out on schedule, so no lead goes cold because nobody had time to call back.</span></div></li>
+        <li class="hf-step s4"><span class="hf-mark" aria-hidden="true"></span><div class="hf-text"><b>The call gets booked</b><span>They pick a time on your calendar. No phone tag.</span></div></li>
+        <li class="hf-step s5"><span class="hf-mark" aria-hidden="true"></span><div class="hf-text"><b>Lead becomes a customer</b><span>You close the deal. The system just made sure they didn't slip away first.</span></div></li>
+        <li class="hf-step s6"><span class="hf-mark" aria-hidden="true"></span><div class="hf-text"><b>Reviews and referrals bring the next lead</b><span>Happy customers leave reviews and send referrals, and both bring in the next lead.</span></div></li>
+      </ol>
+      <div class="hf-note"><strong>You see what's working:</strong> one dashboard shows which source, which page, and which follow-up is actually driving business.</div>
     </div>
+    </div>
+    <script>
+      (function(){
+        try {
+          if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          var wrap = document.getElementById('hfWrap');
+          var flow = wrap.querySelector('.hflow');
+          var chips = {}; wrap.querySelectorAll('.hf-src').forEach(function(c){ chips[c.getAttribute('data-name')] = c; });
+          var steps = wrap.querySelectorAll('.hf-step');
+          var litCount = [0,0,0,0,0,0];
+          var active = 0, MAX = 7;
+          var rand = function(a, b){ return a + Math.random() * (b - a); };
+          var ease = function(t){ return t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2) / 2; };
+          var bez = function(p0, p1, p2, p3, t){ var u = 1 - t; return u*u*u*p0 + 3*u*u*t*p1 + 3*u*t*t*p2 + t*t*t*p3; };
+          var narrow = function(){ return window.matchMedia('(max-width:900px)').matches; };
+          var flash = function(chip){ chip.classList.add('send'); setTimeout(function(){ chip.classList.remove('send'); }, 600); };
+          var arrive = function(i, hold){
+            var st = steps[i], mk = st.querySelector('.hf-mark');
+            litCount[i]++; st.classList.add('lit');
+            mk.classList.remove('ping'); void mk.offsetWidth; mk.classList.add('ping');
+            setTimeout(function(){ litCount[i]--; if (litCount[i] <= 0) { litCount[i] = 0; st.classList.remove('lit'); } }, hold + 250);
+          };
+          // Build the route for one lead as a list of segments: {pts:[...], ms, stepAt}
+          var HOLD = 380, MOVE = 520;
+          var route = function(y){
+            var W = flow.getBoundingClientRect().width;
+            var cx = function(i){ return 150 + W * (i + 0.5) / 6; };
+            var segs = [];
+            segs.push({ curve: [86,116,120,150, y,y,53,53], ms: 700 });           // source -> merge point
+            segs.push({ line: [150,53, cx(0),53], ms: 550, step: 0 });            // into step 1
+            for (var i = 1; i < 6; i++) segs.push({ line: [cx(i-1),53, cx(i),53], ms: MOVE, step: i, wait: HOLD });
+            segs.push({ line: [cx(5),53, cx(5),20], ms: 380, wait: HOLD });        // up to the return path
+            segs.push({ line: [cx(5),20, 92,20], ms: 1500 });                      // back along the top to Referral
+            return segs;
+          };
+          var send = function(name){
+            var chip = chips[name]; flash(chip);
+            if (narrow()) {                         // phones: light the steps in order, no traveling dot
+              var t = 900;
+              for (var i = 0; i < 6; i++) (function(k, d){ setTimeout(function(){ arrive(k, HOLD); }, d); })(i, t + i * (MOVE + HOLD));
+              setTimeout(function(){ flash(chips['Referral']); }, t + 6 * (MOVE + HOLD));
+              return;
+            }
+            if (active >= MAX) return;
+            active++;
+            var dot = document.createElement('span'); dot.className = 'hf-src-dot'; wrap.appendChild(dot);
+            var segs = route(+chip.getAttribute('data-y')), k = 0;
+            var place = function(x, y){ dot.style.left = x + 'px'; dot.style.top = y + 'px'; };
+            var runSeg = function(){
+              if (k >= segs.length) {                // lead completed the loop: lands in Referral
+                dot.remove(); active--; flash(chips['Referral']);
+                if (Math.random() < 0.5) setTimeout(function(){ send('Referral'); }, rand(500, 1200));
+                return;
+              }
+              var sg = segs[k], start = performance.now();
+              var frame = function(now){
+                var p = Math.min(1, (now - start) / sg.ms), e = ease(p);
+                if (sg.curve) { var c = sg.curve; place(bez(c[0],c[1],c[2],c[3],e), bez(c[4],c[5],c[6],c[7],e)); }
+                else { var l = sg.line; place(l[0] + (l[2]-l[0]) * e, l[1] + (l[3]-l[1]) * e); }
+                if (p < 1) { requestAnimationFrame(frame); return; }
+                if (sg.step !== undefined) arrive(sg.step, HOLD);
+                k++;
+                var next = segs[k];
+                setTimeout(runSeg, (sg.step !== undefined) ? HOLD : 0);
+              };
+              requestAnimationFrame(frame);
+            };
+            runSeg();
+          };
+          var outside = ['Website', 'Ad', 'Walk-in', 'Website', 'Ad', 'Walk-in', 'Referral'];
+          var loop = function(){
+            var r = Math.random(), n = r < 0.65 ? 1 : (r < 0.88 ? 2 : 3);
+            for (var i = 0; i < n; i++) (function(name, d){ setTimeout(function(){ send(name); }, d); })(outside[Math.floor(Math.random() * outside.length)], i === 0 ? 0 : rand(80, 380));
+            setTimeout(loop, rand(2200, 5200));
+          };
+          setTimeout(loop, 900);
+        } catch (e) {}
+      })();
+    </script>
   </div>
 </section>
 
@@ -516,13 +711,13 @@
     <div class="section-head">
       <div class="eyebrow">How an engagement runs</div>
       <h2>Audit first, then build only what you need</h2>
-      <p>AFI doesn't start by selling a package. Every engagement starts with the free scorecard or the paid audit, so both sides know exactly where the time and money are leaking before anything gets built — then moves into whichever offerings actually address it.</p>
+      <p>Some clients know exactly what they need — a new website, say — and can start straight from a package. Everyone else starts with the free scorecard, the paid audit, or a quick conversation, so both sides know where the time and money are leaking before anything gets built.</p>
     </div>
     <div style="max-width:760px;">
       <ol style="padding-left:20px; color:#3d4a5c; font-size:1rem; line-height:1.9;">
-        <li><strong>Audit</strong> — free scorecard or the $16 Detailed Business Efficiency Audit maps exactly where automation will save the most time and generate the most revenue.</li>
-        <li><strong>Build</strong> — a focused first package, scoped from what the audit found: a site, an AI clone, ad creative, or GHL setup.</li>
-        <li><strong>Manage</strong> — an ongoing retainer once the system is running, so it keeps working without you having to babysit it.</li>
+        <li><strong>Audit</strong> — the free scorecard, the $88 Detailed Business Efficiency Audit, or a deeper review maps exactly where automation will save the most time and generate the most revenue.</li>
+        <li><strong>Build</strong> — a focused first package, scoped from what the audit found: a website package, a digital clone, ad creative, or CRM and automation setup.</li>
+        <li><strong>Monitor</strong> — once your system is live, a monthly licensing and monitoring fee covers the tools it runs on, and we keep watch to make sure it keeps working, so you don't have to babysit it. Each item is listed on its own line, so you always see what you pay for. New changes are quoted as their own project.</li>
       </ol>
     </div>
   </div>
@@ -530,17 +725,19 @@
 
 <section class="final-cta" id="cta">
   <div class="wrap">
-    <h2>Start with the audit. See where the time is going.</h2>
-    <p>Twelve quick questions, a free scorecard, and an honest read on where AI could actually help — before you spend a dollar on anything else.</p>
-    <a href="scorecard.html" target="_blank" rel="noopener" class="btn-primary">Get my free efficiency scorecard →</a>
+    <h2>Two ways to get started.</h2>
+    <p>Need a website that brings in leads? Start with a package. Not sure where the time and money are going? Twelve quick questions get you a free scorecard and an honest read on where AI tools and processes could actually help.</p>
+    <div class="hero-ctas" style="justify-content:center; margin-top:0;">
+      <a href="offerings.html#websites" class="btn-primary">See website packages →</a>
+      <a href="scorecard.html" target="_blank" rel="noopener" class="btn-primary btn-teal">Get my free scorecard →</a>
+    </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <div class="logo">
-      <span class="logo-chip"><img src="img/afi-logo-mark.png" alt="AFI mark" class="logo-mark-img"></span>
-      <div class="logo-text" style="color:#fff;">AF<span>I</span></div>
+      <span class="logo-chip"><img src="img/afi-logo-mark.png" alt="Always Forward Intelligence mark" class="logo-mark-img"></span>
     </div>
     <div class="fine">&copy; 2026 ALWAYS FORWARD INTELLIGENCE</div>
   </div>
