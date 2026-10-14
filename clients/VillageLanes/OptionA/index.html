@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Village Lanes — Option A: Score Sheet</title>
+<meta name="description" content="Design preview, Option A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Bowlby+One+SC&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0E1A2B}
+a{color:#2F5DA8}a:hover{color:#1C3F7A}
+</style>
+</head>
+<body>
+<div style="background:#000;color:#fff;font:500 13px/1.4 system-ui,sans-serif;padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between">
+<span>Design preview for Village Lanes · not the live site</span>
+<a href="../" style="color:#fff">← All options</a>
+</div>
+
+<div style="font-family: 'Archivo', system-ui, sans-serif; color: #13202F; background: #0E1A2B; min-height: 100vh">
+
+  <!-- TOP STRIP -->
+  <header style="background: #0E1A2B; border-bottom: 1px solid #22344F">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 28px">
+      <a href="#tonight" style="text-decoration: none; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap">
+        <span style="font-family: 'Bowlby One SC', sans-serif; font-size: 26px; color: #F4F6FA; letter-spacing: 0.5px">Village Lanes</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #A9B6C8; letter-spacing: 1px; text-transform: uppercase">Howard · Suamico · 3798 Velp Ave</span>
+      </a>
+      <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 22px">
+        <a href="#tonight" style="color: #DCE3EC; text-decoration: none; font-weight: 500; font-size: 15px; padding: 10px 0">Tonight</a>
+        <a href="#sheet" style="color: #DCE3EC; text-decoration: none; font-weight: 500; font-size: 15px; padding: 10px 0">Parties</a>
+        <a href="#sheet" style="color: #DCE3EC; text-decoration: none; font-weight: 500; font-size: 15px; padding: 10px 0">Leagues</a>
+        <a href="#sheet" style="color: #DCE3EC; text-decoration: none; font-weight: 500; font-size: 15px; padding: 10px 0">Youth</a>
+        <a href="#sheet" style="color: #DCE3EC; text-decoration: none; font-weight: 500; font-size: 15px; padding: 10px 0">Tournament</a>
+        <a href="#visit" style="color: #DCE3EC; text-decoration: none; font-weight: 500; font-size: 15px; padding: 10px 0">Visit</a>
+        <a href="tel:+19204341203" style="background: #FFB547; color: #0E1A2B; text-decoration: none; font-weight: 700; font-size: 15px; padding: 12px 18px; border-radius: 4px">Call 920-434-1203</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- TONIGHT BOARD (scoring monitor) -->
+  <section id="tonight" aria-labelledby="tonight-h" style="background: #0E1A2B; color: #F4F6FA">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 56px 24px 64px; display: flex; flex-wrap: wrap; gap: 40px">
+
+      <div style="flex: 999 1 560px; min-width: 0">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 2px; color: #FFB547; text-transform: uppercase">On the lanes</div>
+        <h1 id="tonight-h" style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: clamp(40px, 6vw, 76px); line-height: 1; margin: 14px 0 26px">What's rolling <span id="vl-dayname">Wednesday</span></h1>
+
+        <div id="vl-days" role="group" aria-label="Pick a day" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px">
+          
+        </div>
+
+        <div style="border: 2px solid #2A3E5C; border-radius: 6px; background: #12223A">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding: 18px 22px; border-bottom: 2px solid #2A3E5C">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 1.5px; color: #A9B6C8; text-transform: uppercase">Doors</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 30px; font-weight: 600; color: #FFB547"><span id="vl-hours">2 – 10 PM</span></span>
+          </div>
+          <div id="vl-leagues"></div>
+          <div style="padding: 16px 22px; font-size: 15px; line-height: 1.5; color: #C7D1DE">Open bowling runs around league play. Lanes go fast on league nights — call ahead and we'll hold one for you.</div>
+        </div>
+      </div>
+
+      <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 22px; justify-content: center; align-items: center">
+        <svg aria-hidden="true" width="240" height="220" viewBox="0 0 240 220">
+          <g fill="#F4F6FA" stroke="#0E1A2B" stroke-width="2">
+            <circle cx="120" cy="196" r="18"></circle>
+            <circle cx="98" cy="158" r="18"></circle><circle cx="142" cy="158" r="18"></circle>
+            <circle cx="76" cy="120" r="18"></circle><circle cx="120" cy="120" r="18"></circle><circle cx="164" cy="120" r="18"></circle>
+            <circle cx="54" cy="82" r="18"></circle><circle cx="98" cy="82" r="18"></circle><circle cx="142" cy="82" r="18"></circle><circle cx="186" cy="82" r="18"></circle>
+          </g>
+          <g fill="#D7263D">
+            <rect x="110" y="190" width="20" height="4"></rect>
+            <rect x="88" y="152" width="20" height="4"></rect><rect x="132" y="152" width="20" height="4"></rect>
+            <rect x="66" y="114" width="20" height="4"></rect><rect x="110" y="114" width="20" height="4"></rect><rect x="154" y="114" width="20" height="4"></rect>
+            <rect x="44" y="76" width="20" height="4"></rect><rect x="88" y="76" width="20" height="4"></rect><rect x="132" y="76" width="20" height="4"></rect><rect x="176" y="76" width="20" height="4"></rect>
+          </g>
+          <text x="120" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" letter-spacing="3" fill="#A9B6C8">FULL RACK</text>
+        </svg>
+        <div style="text-align: center; max-width: 320px">
+          <p style="margin: 0 0 6px; font-size: 16px; line-height: 1.5; color: #DCE3EC">A family house for every age — leagues, birthday parties, school trips, fundraisers and company nights.</p>
+          <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 1px; color: #A9B6C8; text-transform: uppercase">Hours may change · please call ahead</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCORE SHEET -->
+  <section id="sheet" aria-labelledby="sheet-h" style="background: #EEF2F7; padding: 64px 0 72px; background-image: linear-gradient(#DDE5F0 1px, transparent 1px); background-size: 100% 32px">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px">
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 32px; margin-bottom: 28px">
+        <h2 id="sheet-h" style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: clamp(32px, 4vw, 48px); line-height: 1.05; margin: 0; color: #13202F">Your score sheet</h2>
+        <div style="display: flex; flex-wrap: wrap; border: 2px solid #13202F; background: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 13px">
+          <span style="padding: 10px 14px; border-right: 2px solid #13202F"><span style="color: #4A5868">BOWLER</span> &#160;You</span>
+          <span style="padding: 10px 14px; border-right: 2px solid #13202F"><span style="color: #4A5868">TEAM</span> &#160;Your crew</span>
+          <span style="padding: 10px 14px"><span style="color: #4A5868">LANE</span> &#160;Ours</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); border-top: 2px solid #13202F; border-left: 2px solid #13202F; background: #FFFFFF">
+
+        <!-- 1 Birthday parties -->
+        <article style="border-right: 2px solid #13202F; border-bottom: 2px solid #13202F; display: flex; flex-direction: column; min-height: 320px">
+          <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #13202F; height: 44px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 14px; padding: 12px 14px; color: #2F5DA8">1</span>
+            <span aria-hidden="true" style="display: flex"><span style="width: 44px; border-left: 2px solid #13202F"></span><span style="width: 44px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC', sans-serif; font-size: 20px; color: #D7263D">X</span></span>
+          </div>
+          <div style="padding: 18px 18px 20px">
+            <h3 style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: 22px; margin: 0 0 10px">Birthday parties</h3>
+            <ul style="margin: 0; padding-left: 18px; font-size: 15px; line-height: 1.55; color: #3D4A5A">
+              <li>Free shoes, cups and napkins</li>
+              <li>Birthday kid bowls free with 6+ guests</li>
+              <li>12" pizza + pitcher of soda: $12</li>
+              <li>A birthday gift from us</li>
+            </ul>
+          </div>
+          <div style="margin-top: auto; display: flex; justify-content: flex-end; border-top: 2px solid #13202F">
+            <span style="width: 60%; border-left: 2px solid #13202F; padding: 12px 14px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600">$3 <span style="font-size: 13px; color: #4A5868">/person /game</span></span>
+          </div>
+        </article>
+
+        <!-- 2 Company parties -->
+        <article style="border-right: 2px solid #13202F; border-bottom: 2px solid #13202F; display: flex; flex-direction: column; min-height: 320px">
+          <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #13202F; height: 44px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 14px; padding: 12px 14px; color: #2F5DA8">2</span>
+            <span aria-hidden="true" style="display: flex"><span style="width: 44px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 17px">9</span><span style="width: 44px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC', sans-serif; font-size: 20px; color: #D7263D">/</span></span>
+          </div>
+          <div style="padding: 18px 18px 20px">
+            <h3 style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: 22px; margin: 0 0 10px">Company &amp; group nights</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3D4A5A">Team outings, fundraisers, school field trips — any size. Tell us the group and we'll build the night around it.</p>
+          </div>
+          <div style="margin-top: auto; display: flex; justify-content: flex-end; border-top: 2px solid #13202F">
+            <a href="#book" style="width: 60%; border-left: 2px solid #13202F; padding: 12px 14px; text-align: right; font-weight: 700; font-size: 15px; text-decoration: none">Plan a party →</a>
+          </div>
+        </article>
+
+        <!-- 3 Youth -->
+        <article style="border-right: 2px solid #13202F; border-bottom: 2px solid #13202F; display: flex; flex-direction: column; min-height: 320px">
+          <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #13202F; height: 44px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 14px; padding: 12px 14px; color: #2F5DA8">3</span>
+            <span aria-hidden="true" style="display: flex"><span style="width: 44px; border-left: 2px solid #13202F"></span><span style="width: 44px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC', sans-serif; font-size: 20px; color: #D7263D">X</span></span>
+          </div>
+          <div style="padding: 18px 18px 20px">
+            <h3 style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: 22px; margin: 0 0 10px">Youth leagues</h3>
+            <p style="margin: 0 0 8px; font-size: 15px; line-height: 1.55; color: #3D4A5A">Saturday mornings. 11 &amp; under (bumpers optional from age 3), and 12 &amp; up.</p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3D4A5A">Season-end banquet — every youth bowler takes home an award.</p>
+          </div>
+          <div style="margin-top: auto; display: flex; justify-content: flex-end; border-top: 2px solid #13202F">
+            <span style="width: 60%; border-left: 2px solid #13202F; padding: 12px 14px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600">Sat <span style="font-size: 13px; color: #4A5868">AM</span></span>
+          </div>
+        </article>
+
+        <!-- 4 Coach -->
+        <article style="border-right: 2px solid #13202F; border-bottom: 2px solid #13202F; display: flex; flex-direction: column; min-height: 320px">
+          <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #13202F; height: 44px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 14px; padding: 12px 14px; color: #2F5DA8">4</span>
+            <span aria-hidden="true" style="display: flex"><span style="width: 44px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 17px">8</span><span style="width: 44px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC', sans-serif; font-size: 20px; color: #D7263D">/</span></span>
+          </div>
+          <div style="padding: 18px 18px 20px">
+            <h3 style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: 22px; margin: 0 0 10px">Coaching in the house</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3D4A5A">Jerry Polarek, USBC Silver Certified coach, is at every youth league — and happy to help any bowler at any level brush up.</p>
+          </div>
+          <div style="margin-top: auto; display: flex; justify-content: flex-end; border-top: 2px solid #13202F">
+            <span style="width: 60%; border-left: 2px solid #13202F; padding: 12px 14px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 16px; font-weight: 600">USBC Silver</span>
+          </div>
+        </article>
+
+        <!-- 5 Join a league -->
+        <article style="border-right: 2px solid #13202F; border-bottom: 2px solid #13202F; display: flex; flex-direction: column; min-height: 320px">
+          <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #13202F; height: 44px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 14px; padding: 12px 14px; color: #2F5DA8">5</span>
+            <span aria-hidden="true" style="display: flex"><span style="width: 44px; border-left: 2px solid #13202F"></span><span style="width: 44px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC', sans-serif; font-size: 20px; color: #D7263D">X</span></span>
+          </div>
+          <div style="padding: 18px 18px 20px">
+            <h3 style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: 22px; margin: 0 0 10px">Join a league</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3D4A5A">Ladies, men's, mixed, couples, seniors. No team? Call us — we'll find you one. Fall leagues start the week after Labor Day; spring leagues the 2nd week of May.</p>
+          </div>
+          <div style="margin-top: auto; display: flex; justify-content: flex-end; border-top: 2px solid #13202F">
+            <a href="#tonight" style="width: 60%; border-left: 2px solid #13202F; padding: 12px 14px; text-align: right; font-weight: 700; font-size: 15px; text-decoration: none">See the week →</a>
+          </div>
+        </article>
+
+        <!-- 6 League perks -->
+        <article style="border-right: 2px solid #13202F; border-bottom: 2px solid #13202F; display: flex; flex-direction: column; min-height: 320px">
+          <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #13202F; height: 44px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 14px; padding: 12px 14px; color: #2F5DA8">6</span>
+            <span aria-hidden="true" style="display: flex"><span style="width: 44px; border-left: 2px solid #13202F"></span><span style="width: 44px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC', sans-serif; font-size: 20px; color: #D7263D">X</span></span>
+          </div>
+          <div style="padding: 18px 18px 20px">
+            <h3 style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: 22px; margin: 0 0 10px">League perks</h3>
+            <ul style="margin: 0; padding-left: 18px; font-size: 15px; line-height: 1.55; color: #3D4A5A">
+              <li>Strike in the 5th frame = free team pizza</li>
+              <li>Free popcorn in the bar</li>
+              <li>Free drink card at Christmas</li>
+              <li>Honor-score plaques at season's end</li>
+            </ul>
+          </div>
+          <div style="margin-top: auto; display: flex; justify-content: flex-end; border-top: 2px solid #13202F">
+            <span style="width: 60%; border-left: 2px solid #13202F; padding: 12px 14px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 16px; font-weight: 600">5th = pizza</span>
+          </div>
+        </article>
+
+        <!-- 7 Scotch doubles -->
+        <article style="border-right: 2px solid #13202F; border-bottom: 2px solid #13202F; display: flex; flex-direction: column; min-height: 320px; background: #13202F; color: #F4F6FA">
+          <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #2A3E5C; height: 44px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 14px; padding: 12px 14px; color: #FFB547">7</span>
+            <span aria-hidden="true" style="display: flex"><span style="width: 44px; border-left: 2px solid #2A3E5C"></span><span style="width: 44px; border-left: 2px solid #2A3E5C; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC', sans-serif; font-size: 20px; color: #FFB547">X</span></span>
+          </div>
+          <div style="padding: 18px 18px 20px">
+            <h3 style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: 22px; margin: 0 0 10px">9-Pin Scotch Doubles</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #C7D1DE">Northeast Wisconsin's largest. Every weekend, March–May. $30 a couple, handicapped so anyone 18+ can win. Organize 24 couples, bowl free.</p>
+          </div>
+          <div style="margin-top: auto; display: flex; justify-content: flex-end; border-top: 2px solid #2A3E5C">
+            <span style="width: 60%; border-left: 2px solid #2A3E5C; padding: 12px 14px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600; color: #FFB547">$750 <span style="font-size: 13px; color: #A9B6C8">1st</span></span>
+          </div>
+        </article>
+
+        <!-- 8 Oldest league -->
+        <article style="border-right: 2px solid #13202F; border-bottom: 2px solid #13202F; display: flex; flex-direction: column; min-height: 320px">
+          <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #13202F; height: 44px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 14px; padding: 12px 14px; color: #2F5DA8">8</span>
+            <span aria-hidden="true" style="display: flex"><span style="width: 44px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 17px">9</span><span style="width: 44px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC', sans-serif; font-size: 20px; color: #D7263D">/</span></span>
+          </div>
+          <div style="padding: 18px 18px 20px">
+            <h3 style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: 22px; margin: 0 0 10px">The oldest league in the city</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3D4A5A">St. Pat's mixed league still rolls here Sunday mornings. Neighbors have been bowling at Village Lanes for over 35 years.</p>
+          </div>
+          <div style="margin-top: auto; display: flex; justify-content: flex-end; border-top: 2px solid #13202F">
+            <span style="width: 60%; border-left: 2px solid #13202F; padding: 12px 14px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600">35+ <span style="font-size: 13px; color: #4A5868">yrs</span></span>
+          </div>
+        </article>
+
+        <!-- 9 Hours -->
+        <article style="border-right: 2px solid #13202F; border-bottom: 2px solid #13202F; display: flex; flex-direction: column; min-height: 320px">
+          <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #13202F; height: 44px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 14px; padding: 12px 14px; color: #2F5DA8">9</span>
+            <span aria-hidden="true" style="display: flex"><span style="width: 44px; border-left: 2px solid #13202F"></span><span style="width: 44px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC', sans-serif; font-size: 20px; color: #D7263D">X</span></span>
+          </div>
+          <div style="padding: 14px 18px 16px">
+            <h3 style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: 22px; margin: 0 0 8px">Hours</h3>
+            <table style="width: 100%; border-collapse: collapse; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #3D4A5A">
+              <tbody>
+                <tr><td style="padding: 2px 0">Mon</td><td style="text-align: right">2 – 10 pm</td></tr>
+                <tr><td style="padding: 2px 0">Tue</td><td style="text-align: right">11 am – 10 pm</td></tr>
+                <tr><td style="padding: 2px 0">Wed</td><td style="text-align: right">2 – 10 pm</td></tr>
+                <tr><td style="padding: 2px 0">Thu</td><td style="text-align: right">2 – 10 pm</td></tr>
+                <tr><td style="padding: 2px 0">Fri</td><td style="text-align: right">9 am – 10 pm</td></tr>
+                <tr><td style="padding: 2px 0">Sat</td><td style="text-align: right">9 am – 10 pm</td></tr>
+                <tr><td style="padding: 2px 0">Sun</td><td style="text-align: right">9 am – 6 pm</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="margin-top: auto; display: flex; justify-content: flex-end; border-top: 2px solid #13202F">
+            <span style="width: 60%; border-left: 2px solid #13202F; padding: 12px 14px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 600">7 days</span>
+          </div>
+        </article>
+
+        <!-- 10 Book -->
+        <article id="book" style="border-right: 2px solid #13202F; border-bottom: 2px solid #13202F; display: flex; flex-direction: column; min-height: 320px; background: #FFF7E8">
+          <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #13202F; height: 44px">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 14px; padding: 12px 14px; color: #2F5DA8">10</span>
+            <span aria-hidden="true" style="display: flex"><span style="width: 40px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC', sans-serif; font-size: 18px; color: #D7263D">X</span><span style="width: 40px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC', sans-serif; font-size: 18px; color: #D7263D">X</span><span style="width: 40px; border-left: 2px solid #13202F; display: flex; align-items: center; justify-content: center; font-family: 'Bowlby One SC', sans-serif; font-size: 18px; color: #D7263D">X</span></span>
+          </div>
+          <div style="padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 10px">
+            <h3 style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: 22px; margin: 0">Finish strong</h3>
+            <a href="tel:+19204341203" style="display: block; background: #13202F; color: #F4F6FA; text-decoration: none; font-weight: 700; padding: 13px 14px; border-radius: 4px; text-align: center">Call for a lane</a>
+            <a href="#visit" style="display: block; border: 2px solid #13202F; color: #13202F; text-decoration: none; font-weight: 700; padding: 11px 14px; border-radius: 4px; text-align: center">Reserve a party</a>
+            <a href="#visit" style="display: block; border: 2px solid #13202F; color: #13202F; text-decoration: none; font-weight: 700; padding: 11px 14px; border-radius: 4px; text-align: center">Get the offers email</a>
+          </div>
+          <div style="margin-top: auto; display: flex; justify-content: flex-end; border-top: 2px solid #13202F">
+            <span style="width: 60%; border-left: 2px solid #13202F; padding: 12px 14px; text-align: right; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600">300</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <footer id="visit" style="background: #0E1A2B; color: #F4F6FA">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 56px 24px 40px; display: flex; flex-wrap: wrap; gap: 40px 56px">
+      <div style="flex: 1 1 280px">
+        <h2 style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: 32px; margin: 0 0 14px">Find the lanes</h2>
+        <p style="margin: 0 0 4px; font-size: 17px">3798 Velp Avenue</p>
+        <p style="margin: 0 0 14px; font-size: 17px">Green Bay, WI 54313</p>
+        <a href="tel:+19204341203" style="color: #FFB547; font-family: 'IBM Plex Mono', monospace; font-size: 22px; font-weight: 600; text-decoration: none">920-434-1203</a>
+        <p style="margin: 18px 0 0; font-size: 15px; line-height: 1.5; color: #A9B6C8">Owned and run by Tami &amp; Jerry Polarek. Ask for Tami to plan a party.</p>
+      </div>
+      <div style="flex: 1 1 280px; min-height: 200px; border: 2px dashed #2A3E5C; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #A9B6C8; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 1px; text-align: center; padding: 16px">[MAP — 3798 VELP AVE]</div>
+      <form style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px">
+        <h2 style="font-family: 'Bowlby One SC', sans-serif; font-weight: 400; font-size: 24px; margin: 0">Offers &amp; league news</h2>
+        <label for="vl-email" style="font-size: 15px; color: #C7D1DE">Email address</label>
+        <input id="vl-email" type="email" placeholder="you@example.com" style="font: inherit; font-size: 16px; padding: 13px 14px; border-radius: 4px; border: 2px solid #2A3E5C; background: #12223A; color: #F4F6FA">
+        <button type="button" style="font: inherit; font-weight: 700; font-size: 16px; padding: 13px 14px; border-radius: 4px; border: 0; background: #FFB547; color: #0E1A2B; cursor: pointer">Sign me up</button>
+        <a href="https://www.facebook.com/pages/Village-Lanes/183489561666" style="color: #DCE3EC; font-size: 15px; margin-top: 6px">Village Lanes on Facebook</a>
+      </form>
+    </div>
+    <div style="max-width: 1280px; margin: 0 auto; padding: 18px 24px 28px; border-top: 1px solid #22344F; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #A9B6C8; letter-spacing: 1px">VILLAGE LANES · HOWARD–SUAMICO · LET THE GOOD TIMES ROLL</div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+var DAYS = [
+      { short: 'Mon', name: 'Monday', hours: '2 – 10 PM', leagues: [
+        { time: '6:30 PM', name: 'Swingers', detail: "Ladies · 4 per team" } ] },
+      { short: 'Tue', name: 'Tuesday', hours: '11 AM – 10 PM', leagues: [
+        { time: '1:00 PM', name: 'Senior Citizens', detail: 'Mixed · 4 per team' },
+        { time: '6:30 PM', name: 'Village Nite Out', detail: 'Mixed · 4 per team' } ] },
+      { short: 'Wed', name: 'Wednesday', hours: '2 – 10 PM', leagues: [
+        { time: '6:30 PM', name: 'Homewreckers', detail: "Men's · 5 per team" } ] },
+      { short: 'Thu', name: 'Thursday', hours: '2 – 10 PM', leagues: [
+        { time: '6:30 PM', name: 'Bangers', detail: "Men's · 5 per team" },
+        { time: '9:00 PM', name: 'Hustlers', detail: 'Mixed · 4 per team' } ] },
+      { short: 'Fri', name: 'Friday', hours: '9 AM – 10 PM', leagues: [
+        { time: '9:00 AM', name: "Stars", detail: "Women's · 3 per team" },
+        { time: '1:00 PM', name: 'Seniors', detail: 'Mixed · 4 per team' },
+        { time: '6:30 PM', name: 'Mixed Couples', detail: 'Every other week' } ] },
+      { short: 'Sat', name: 'Saturday', hours: '9 AM – 10 PM', leagues: [
+        { time: '8:15 AM', name: 'Youth · 11 & under', detail: 'Bumpers optional from age 3' },
+        { time: '10:15 AM', name: 'Youth · 12 & up', detail: '3 games' },
+        { time: '4:00 PM', name: 'Mixed Couples', detail: '4 per team · every other week' },
+        { time: '6:30 PM', name: 'Couples', detail: '4 per team · every other week' } ] },
+      { short: 'Sun', name: 'Sunday', hours: '9 AM – 6 PM', leagues: [
+        { time: '9:00 AM', name: "St. Pat's", detail: 'Mixed · 3 per team · oldest league in the city' } ] }
+    ];
+var amber = '#FFB547';
+var base = 'font-family: IBM Plex Mono, monospace; font-size: 15px; font-weight: 600; letter-spacing: 1px; min-width: 64px; min-height: 44px; padding: 10px 14px; border-radius: 4px; cursor: pointer; ';
+var tabs = document.getElementById('vl-days'), list = document.getElementById('vl-leagues');
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function render(cur){
+  tabs.innerHTML = DAYS.map(function(d,i){
+    var on = i===cur;
+    return '<button type="button" data-i="'+i+'" aria-pressed="'+on+'" style="'+base+(on?'background:'+amber+';color:#0E1A2B;border:2px solid '+amber+';':'background:transparent;color:#DCE3EC;border:2px solid #2A3E5C;')+'">'+d.short.toUpperCase()+'</button>';
+  }).join('');
+  var d = DAYS[cur];
+  document.getElementById('vl-dayname').textContent = d.name;
+  document.getElementById('vl-hours').textContent = d.hours;
+  list.innerHTML = d.leagues.map(function(l){
+    return '<div style="display:flex;flex-wrap:wrap;gap:6px 22px;align-items:baseline;padding:16px 22px;border-bottom:1px solid #22344F">'+
+      '<span style="font-family:IBM Plex Mono,monospace;font-size:17px;font-weight:500;color:'+amber+';min-width:92px">'+esc(l.time)+'</span>'+
+      '<span style="font-weight:700;font-size:19px;color:#F4F6FA">'+esc(l.name)+'</span>'+
+      '<span style="font-size:15px;color:#A9B6C8">'+esc(l.detail)+'</span></div>';
+  }).join('');
+}
+tabs.addEventListener('click', function(e){ var b=e.target.closest('button[data-i]'); if(b) render(+b.dataset.i); });
+render((new Date().getDay()+6)%7);
+})();
+</script>
+</body>
+</html>
